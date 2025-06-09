@@ -1,9 +1,11 @@
 import React, { useState } from 'react';
-import { Swiper, SwiperSlide, useSwiper } from 'swiper/react';
+import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/css';
 import Slide1 from '../Slides/Slide1';
 import { MdArrowBackIosNew, MdArrowForwardIos } from 'react-icons/md';
 import { Autoplay } from 'swiper/modules';
+import Slide2 from '../Slides/Slide2';
+import Slide3 from '../Slides/Slide3';
 
 const Hero = () => {
     const [next, setNext] = useState(null);
@@ -21,10 +23,10 @@ const Hero = () => {
                         <Slide1 />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Slide1 />
+                        <Slide2 />
                     </SwiperSlide>
                     <SwiperSlide>
-                        <Slide1 />
+                        <Slide3 />
                     </SwiperSlide>
                 </Swiper>
             </div>
