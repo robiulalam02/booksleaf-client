@@ -1,0 +1,48 @@
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300..700;1,300..700&family=Lora:ital,wght@0,400..700;1,400..700&display=swap');
+
+@import "tailwindcss";
+@plugin "daisyui";
+
+@plugin "daisyui";
+
+@plugin "daisyui/theme" {
+    name: "mytheme";
+    default: true;
+    /* set as default */
+    prefersdark: false;
+    /* set as default dark mode (prefers-color-scheme:dark) */
+    color-scheme: light;
+    /* color of browser-provided UI */
+
+    /* --color-base-100: oklch(98% 0.02 240);
+    --color-base-200: oklch(95% 0.03 240);
+    --color-base-300: oklch(92% 0.04 240);
+    --color-base-content: oklch(20% 0.05 240); */
+    --color-primary: #1b3764;
+    --color-secondary: #f4ca40;
+    /* --color-secondary-content: oklch(98% 0.01 200);
+    --color-primary-content: oklch(98% 0.01 240); */
+}
+
+* {
+    font-family: "Lora", serif;
+}
+
+.cormorant {
+    font-family: "Cormorant Garamond", serif;
+}
+
+button {
+    cursor: pointer;
+}
+
+a:hover {
+    color: #f4ca40;
+    transition: all;
+    animation: ease-in-out;
+    animation-delay: .3s;
+}
+
+a.active {
+    color: #f4ca40;
+}
