@@ -37,7 +37,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <button className='bg-secondary px-12 py-4 font-medium text-xl hover:bg-transparent hover:rounded-2xl transition-all duration-300 border-2 border-secondary'>Login</button>
+                    <button onClick={()=>navigate('/auth/login')} className='bg-secondary px-12 py-4 font-medium text-xl hover:bg-transparent hover:rounded-2xl transition-all duration-300 border-2 border-secondary'>Login</button>
                 </div>
             </div>
         </div>
