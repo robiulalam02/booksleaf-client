@@ -1,19 +1,47 @@
 import React from 'react';
 import { useNavigate } from 'react-router';
 
-const Login = () => {
+const Register = () => {
     const navigate = useNavigate();
     return (
         <div className='max-w-screen-xl mx-auto h-screen mt-20'>
             <div className='flex items-center justify-between gap-10'>
                 <div class="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
                     <div class="mb-8 text-center">
-                        <h1 class="text-2xl font-bold text-gray-800">Welcome Back</h1>
-                        <p class="text-gray-600 mt-2">Please enter your details to sign in</p>
+                        <h1 class="text-2xl font-bold text-gray-800">Register User</h1>
+                        <p class="text-gray-600 mt-2">Please enter your details to sign up</p>
                     </div>
 
                     <form>
                         <div class="space-y-4">
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Name</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                        </svg>
+                                    </div>
+                                    <input name="name" type="text" required
+                                        class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="Your Name" />
+                                </div>
+                            </div>
+                            <div>
+                                <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Photo URL</label>
+                                <div class="relative">
+                                    <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
+                                        <svg class="h-5 w-5 text-gray-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor">
+                                            <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                            <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                                        </svg>
+                                    </div>
+                                    <input name="name" type="url" required
+                                        class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                        placeholder="Photo URL" />
+                                </div>
+                            </div>
                             <div>
                                 <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
                                 <div class="relative">
@@ -25,7 +53,7 @@ const Login = () => {
                                     </div>
                                     <input id="email" name="email" type="email" autocomplete="email" required
                                         class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                        placeholder="your@email.com" />
+                                        placeholder="Your Email" />
                                 </div>
                             </div>
 
@@ -95,17 +123,17 @@ const Login = () => {
                     <div class="mt-6 text-center">
                         <p class="text-sm text-gray-600">
                             Don't have an account?
-                            <button onClick={()=> navigate('/auth/register')} class="font-medium text-blue-600 hover:text-blue-500">Sign Up</button>
+                            <button onClick={()=> navigate('/auth/login')} class="font-medium text-blue-600 hover:text-blue-500">Sign In</button>
                         </p>
                     </div>
                 </div>
 
                 <div className='text-center'>
-                    <h1 className='text-4xl leading-loose'>Log in and let your reading journey grow — <span className='cormorant text-5xl font-bold text-primary'>"one leaf at a time."</span></h1>
+                    <h1 className='text-4xl leading-loose'>Join BooksLeaf and start building your own  <br /><span className='cormorant text-5xl font-bold text-primary'>"digital library"</span></h1>
                 </div>
             </div>
         </div>
     );
 };
 
-export default Login;
+export default Register;

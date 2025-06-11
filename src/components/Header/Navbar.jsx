@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { use } from 'react';
 import { NavLink, useNavigate } from 'react-router';
+import { AuthContext } from '../../provider/AuthContext';
 
 const Navbar = () => {
+
+    const {num} = use(AuthContext);
+    console.log(num);
 
     const navigate = useNavigate();
 
