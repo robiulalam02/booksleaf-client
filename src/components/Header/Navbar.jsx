@@ -1,7 +1,9 @@
 import React from 'react';
-import { NavLink } from 'react-router';
+import { NavLink, useNavigate } from 'react-router';
 
 const Navbar = () => {
+
+    const navigate = useNavigate();
 
     const links = <>
         <NavLink to="/">Home</NavLink>
@@ -25,9 +27,9 @@ const Navbar = () => {
                             {links}
                         </ul>
                     </div>
-                    <div>
+                    <button onClick={()=>navigate('/')}>
                         <img className='h-14' src="/public/assets/logo.png" alt="" />
-                    </div>
+                    </button>
                 </div>
                 <div className="navbar-center hidden lg:flex">
                     <ul className="menu menu-horizontal px-1 gap-8 text-base">
@@ -35,7 +37,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className="navbar-end">
-                    <button className='bg-secondary px-12 py-4 font-medium text-xl'>Login</button>
+                    <button className='bg-secondary px-12 py-4 font-medium text-xl hover:bg-transparent hover:rounded-2xl transition-all duration-300 border-2 border-secondary'>Login</button>
                 </div>
             </div>
         </div>
