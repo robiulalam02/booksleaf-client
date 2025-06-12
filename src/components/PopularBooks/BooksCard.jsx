@@ -1,8 +1,10 @@
 import React from 'react';
 import { BiUpvote } from 'react-icons/bi';
 import { TbMilitaryRank } from 'react-icons/tb';
+import { useNavigate } from 'react-router';
 
 const BooksCard = ({ book }) => {
+    const navigate = useNavigate();
     return (
         <div className='flex flex-col items-center gap-4 text-center shadow p-4'>
             <div className='bg-gray-300 flex justify-center p-5 w-full h-[300px] overflow-hidden'>
@@ -20,7 +22,7 @@ const BooksCard = ({ book }) => {
             </div>
             <p>{book.book_author}</p>
 
-            <button href="#_" class="relative inline-flex items-center justify-center w-full py-4 overflow-hidden text-lg tracking-tighter text-black border border-secondary group">
+            <button onClick={()=> navigate(`/bookDetails/${book._id}`)} href="#_" class="relative inline-flex items-center justify-center w-full py-4 overflow-hidden text-lg tracking-tighter text-black border border-secondary group">
                 <span class="absolute w-0 h-0 transition-all duration-300 ease-out bg-secondary  group-hover:w-full group-hover:h-full"></span>
                 
                 <span class="relative">Books Detail</span>
