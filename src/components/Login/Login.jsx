@@ -1,8 +1,10 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router';
 
 const Login = () => {
     const navigate = useNavigate();
+    const [showPass, setShowPass] = useState(false);
     return (
         <div className='max-w-screen-xl mx-auto h-screen mt-20'>
             <div className='flex items-center justify-between gap-10'>
@@ -32,7 +34,7 @@ const Login = () => {
                             <div>
                                 <div class="flex items-center justify-between">
                                     <label for="password" class="block text-sm font-medium text-gray-700">Password</label>
-                                    <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-500">Forgot password?</a>
+                                    {/* <a href="#" class="text-sm font-medium text-blue-600 hover:text-blue-500">Forgot password?</a> */}
                                 </div>
                                 <div class="relative mt-1">
                                     <div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
@@ -40,9 +42,25 @@ const Login = () => {
                                             <path fill-rule="evenodd" d="M5 9V7a5 5 0 0110 0v2a2 2 0 012 2v5a2 2 0 01-2 2H5a2 2 0 01-2-2v-5a2 2 0 012-2zm8-2v2H7V7a3 3 0 016 0z" clip-rule="evenodd" />
                                         </svg>
                                     </div>
-                                    <input id="password" name="password" type="password" autocomplete="current-password" required
-                                        class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
-                                        placeholder="••••••••" />
+                                    <div className="relative flex items-center">
+                                        <input
+                                            name="password"
+                                            type={showPass ? 'text' : 'password'}
+                                            required
+                                            pattern="^(?=.*[a-z])(?=.*[A-Z]).{6,}$"
+                                            title="Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long."
+                                            class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                                            placeholder="••••••••" />
+                                        <button type='button' onClick={() => setShowPass(!showPass)} className='absolute right-4'>
+                                            {
+                                                showPass ?
+
+                                                    <span className='text-gray-400'><FaEyeSlash size={17} /></span>
+                                                    :
+                                                    <span className='text-gray-400'><FaEye size={17} /></span>
+                                            }
+                                        </button>
+                                    </div>
                                 </div>
                             </div>
 
@@ -95,7 +113,7 @@ const Login = () => {
                     <div class="mt-6 text-center">
                         <p class="text-sm text-gray-600">
                             Don't have an account?
-                            <button onClick={()=> navigate('/auth/register')} class="font-medium text-blue-600 hover:text-blue-500">Sign Up</button>
+                            <button onClick={() => navigate('/auth/register')} class="font-medium text-blue-600 hover:text-blue-500">Sign Up</button>
                         </p>
                     </div>
                 </div>
