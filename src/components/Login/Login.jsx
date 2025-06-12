@@ -1,10 +1,44 @@
-import React, { useState } from 'react';
+import React, { use, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useNavigate } from 'react-router';
+import { AuthContext } from '../../provider/AuthContext';
+import Swal from 'sweetalert2';
 
 const Login = () => {
+    const { userSignIn } = use(AuthContext)
     const navigate = useNavigate();
     const [showPass, setShowPass] = useState(false);
+
+
+    const handleSignIn = e => {
+        e.preventDefault();
+
+        const form = new FormData(e.target);
+        const userData = Object.fromEntries(form.entries());
+
+        const { email, password } = userData;
+
+        // sign in user with firebase auth
+
+        userSignIn(email, password)
+            .then(res => {
+                if (res.user) {
+                    Swal.fire({
+                        position: "center",
+                        icon: "success",
+                        title: "user sign in successful",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    e.target.reset();
+                    navigate('/')
+                }
+            })
+            .catch(err => {
+                console.log(err);
+            })
+    }
+
     return (
         <div className='max-w-screen-xl mx-auto h-screen mt-20'>
             <div className='flex items-center justify-between gap-10'>
@@ -14,7 +48,7 @@ const Login = () => {
                         <p class="text-gray-600 mt-2">Please enter your details to sign in</p>
                     </div>
 
-                    <form>
+                    <form onSubmit={handleSignIn}>
                         <div class="space-y-4">
                             <div>
                                 <label for="email" class="block text-sm font-medium text-gray-700 mb-1">Email</label>
@@ -25,7 +59,7 @@ const Login = () => {
                                             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                                         </svg>
                                     </div>
-                                    <input id="email" name="email" type="email" autocomplete="email" required
+                                    <input name="email" type="email" required
                                         class="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                         placeholder="your@email.com" />
                                 </div>
@@ -54,10 +88,9 @@ const Login = () => {
                                         <button type='button' onClick={() => setShowPass(!showPass)} className='absolute right-4'>
                                             {
                                                 showPass ?
-
-                                                    <span className='text-gray-400'><FaEyeSlash size={17} /></span>
-                                                    :
                                                     <span className='text-gray-400'><FaEye size={17} /></span>
+                                                    :
+                                                    <span className='text-gray-400'><FaEyeSlash size={17} /></span>
                                             }
                                         </button>
                                     </div>
@@ -65,7 +98,7 @@ const Login = () => {
                             </div>
 
                             <div class="flex items-center">
-                                <input id="remember_me" name="remember_me" type="checkbox"
+                                <input type="checkbox"
                                     class="h-4 w-4 text-blue-600 focus:ring-blue-500 border-gray-300 rounded" />
                                 <label for="remember_me" class="ml-2 block text-sm text-gray-700">Remember me</label>
                             </div>
