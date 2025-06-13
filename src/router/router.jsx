@@ -4,6 +4,7 @@ import Home from "../Pages/Home";
 import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import BookDetails from "../components/BookDetails/BookDetails";
+import Bookshelf from "../components/Bookshelf/Bookshelf";
 
 export const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ export const router = createBrowserRouter([
         {
             index: true,
             Component: Home
+        },
+        {
+          path: '/bookshelf',
+          Component: Bookshelf
         },
         {
           path: '/auth/login',

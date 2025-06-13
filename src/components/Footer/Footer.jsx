@@ -8,7 +8,7 @@ const Footer = () => {
                     <div class="sm:col-span-2">
                         <button className='flex items-center gap-2'>
                             <img className='w-16' src="/assets/logo2.png" alt="" />
-                            <p className='cormorant text-3xl'>BooksLeaf</p>
+                            <p className='cormorant text-3xl'>Books Leaf</p>
                         </button>
                         <div class="mt-6 lg:max-w-sm">
                             <p class="text-sm text-gray-800">
