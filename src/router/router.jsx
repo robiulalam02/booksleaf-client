@@ -5,6 +5,7 @@ import Login from "../components/Login/Login";
 import Register from "../components/Register/Register";
 import BookDetails from "../components/BookDetails/BookDetails";
 import Bookshelf from "../components/Bookshelf/Bookshelf";
+import AddBook from "../components/AddBook/AddBook";
 
 export const router = createBrowserRouter([
   {
@@ -18,6 +19,10 @@ export const router = createBrowserRouter([
         {
           path: '/bookshelf',
           Component: Bookshelf
+        },
+        {
+          path: '/addbook',
+          Component: AddBook
         },
         {
           path: '/auth/login',

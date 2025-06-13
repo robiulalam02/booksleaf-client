@@ -3,8 +3,6 @@ import BookshelfPage from './BookshelfPage';
 import Loading from '../Loading/Loading';
 import { AuthContext } from '../../provider/AuthContext';
 
-const booksPromise = fetch('http://localhost:3000/books').then(res => res.json())
-
 const Bookshelf = () => {
 
     const [booksData, setBooksData] = useState([]);
