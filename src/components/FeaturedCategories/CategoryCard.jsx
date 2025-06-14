@@ -23,7 +23,7 @@ const CategoryCard = ({ categoriesPromise }) => {
             <div className='border-2 border-secondary rounded-xl flex flex-col items-center p-5 gap-2'>
                 <img className='w-14' src="/assets/history.png" alt="" />
                 <h3>History</h3>
-                <p>Available Books: 00</p>
+                <p>Available Books: 0{categories.history}</p>
             </div>
             <div className='border-2 border-secondary rounded-xl flex flex-col items-center p-5 gap-2'>
                 <img className='w-14' src="/assets/thriller.png" alt="" />

@@ -6,6 +6,8 @@ import Register from "../components/Register/Register";
 import BookDetails from "../components/BookDetails/BookDetails";
 import Bookshelf from "../components/Bookshelf/Bookshelf";
 import AddBook from "../components/AddBook/AddBook";
+import MyBooks from "../components/MyBooks/MyBooks";
+import UpdateBook from "../components/UpdateBook/UpdateBook";
 
 export const router = createBrowserRouter([
   {
@@ -23,6 +25,14 @@ export const router = createBrowserRouter([
         {
           path: '/addbook',
           Component: AddBook
+        },
+        {
+          path: '/mybooks',
+          Component: MyBooks
+        },
+        {
+          path: '/updatebook/:id',
+          Component: UpdateBook
         },
         {
           path: '/auth/login',
