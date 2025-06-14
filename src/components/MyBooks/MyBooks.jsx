@@ -5,7 +5,7 @@ import { AuthContext } from '../../provider/AuthContext';
 import Loading from '../Loading/Loading';
 
 const MyBooks = () => {
-    const { user } = use(AuthContext)
+    const { user } = use(AuthContext);
     return (
         <div className='max-w-screen-xl h-dvh mx-auto mt-10 mb-20'>
             <div className='text-center'>
