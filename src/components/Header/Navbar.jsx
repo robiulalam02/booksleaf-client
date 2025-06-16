@@ -61,12 +61,12 @@ const Navbar = () => {
                 <div className="navbar-end">
                     {
                         user ?
-                            <button className='flex items-center gap-6'>
+                            <div className='flex items-center gap-6 cursor-pointer'>
                                 <div className='w-12 h-12 rounded-full overflow-hidden'>
                                     <img className='w-full h-full object-cover' src={user.photoURL} alt="" />
                                 </div>
                                 <button onClick={handleUserSignOut} className='px-6 py-2 font-medium text-xl hover:bg-secondary hover:rounded-lg transition-all duration-300 border-2 border-secondary'>Logout</button>
-                            </button>
+                            </div>
                             :
                             <button onClick={() => navigate('/auth/login')} className='bg-secondary px-12 py-4 font-medium text-xl hover:bg-transparent hover:rounded-2xl transition-all duration-300 border-2 border-secondary'>Login</button>
                     }

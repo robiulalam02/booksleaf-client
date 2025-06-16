@@ -11,7 +11,9 @@ const QuoteOfTheday = () => {
                     <div className='w-8/12'>
                         <span className='opacity-40 relative top-12 left-4'><ImQuotesLeft size={70} /></span>
                         <p className='z-10 cormorant text-5xl font-bold text-primary px-10 leading-relaxed'>Where you are is a result of who you were, but where you go depends entirely on who you choose to be.</p>
-                        <span className='opacity-40 relative bottom-8 left-[450px]'><ImQuotesRight size={70} /></span>
+                        <div className='flex justify-end'>
+                            <span className='opacity-40 relative right-72 bottom-5'><ImQuotesRight size={70} /></span>
+                        </div>
                     </div>
                 </div>
                 <div className='text-end relative -top-20'>

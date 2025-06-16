@@ -8,6 +8,7 @@ import Bookshelf from "../components/Bookshelf/Bookshelf";
 import AddBook from "../components/AddBook/AddBook";
 import MyBooks from "../components/MyBooks/MyBooks";
 import UpdateBook from "../components/UpdateBook/UpdateBook";
+import Profile from "../components/Profile/Profile";
 
 export const router = createBrowserRouter([
   {
@@ -29,6 +30,10 @@ export const router = createBrowserRouter([
         {
           path: '/mybooks',
           Component: MyBooks
+        },
+        {
+          path: '/profile',
+          Component: Profile
         },
         {
           path: '/updatebook/:id',

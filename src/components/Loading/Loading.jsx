@@ -1,10 +1,10 @@
 import React from 'react';
-import { MoonLoader } from 'react-spinners';
+import {MutatingDots} from "react-loader-spinner";
 
-const Loading = ({ loading }) => {
+const Loading = () => {
     return (
         <div className='flex justify-center h-dvh items-center'>
-            <MoonLoader color='#1b3764' loading={loading} />
+            <MutatingDots color='#1b3764' secondaryColor="#f4ca40" />
         </div>
     );
 };
