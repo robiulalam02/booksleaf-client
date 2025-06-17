@@ -1,18 +1,20 @@
 import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../../provider/AuthContext';
 import { FaUser } from "react-icons/fa6";
-import { MdEmail } from 'react-icons/md';
+import { MdEmail, MdOutlineLibraryAdd } from 'react-icons/md';
 import { FaRegEdit } from "react-icons/fa";
 import axios from 'axios';
 import Loading from '../Loading/Loading';
 import BooksByCategory from './BooksByCategory';
 
 import CategoryPiechart from './CategoryPiechart';
+import { useNavigate } from 'react-router';
 
 const Profile = () => {
     const { user } = use(AuthContext);
     const [myBooks, setMyBooks] = useState([]);
     const [byCategory, setByCategory] = useState([]);
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (user?.email) {
@@ -46,7 +48,7 @@ const Profile = () => {
         count,
     }));
 
-    console.log(chartData);
+
 
     return (
         <div className='max-w-screen-xl mx-auto mt-10 mb-20'>
@@ -87,9 +89,18 @@ const Profile = () => {
                 <div className='text-center'>
                     <h2 className='text-2xl font-medium'>Bookshelf Summary</h2>
 
-                    <div className='flex justify-center'>
-                        <CategoryPiechart chartData={chartData} />
-                    </div>
+                    {
+                        myBooks?.length === 0 ?
+                            <div className='flex flex-col items-center gap-5 my-10'>
+                                <h1 className='text-2xl text-error'>No Books In Your Bookshelf !!</h1>
+                                <img className='w-52' src="/assets/empty_bookshelf.png" alt="" />
+                                <button onClick={() => navigate('/addbook')} className='flex items-center gap-1 text-secondary bg-primary rounded-sm mt-5 px-4 py-2'><span><MdOutlineLibraryAdd /></span> Add a Book</button>
+                            </div>
+                            :
+                            <div className='flex justify-center'>
+                                <CategoryPiechart chartData={chartData} />
+                            </div>
+                    }
 
                     <div className='mt-10'>
                         <div className='text-xl'>
@@ -98,7 +109,7 @@ const Profile = () => {
 
                         <div className='grid grid-cols-1 gap-4 mt-10 max-w-2xl mx-auto'>
                             {
-                                myBooks?.map(book => <BooksByCategory key={book._id} book={book} byCategory={byCategory} />)
+                                chartData?.map(book => <BooksByCategory key={book._id} book={book} byCategory={byCategory} />)
                             }
                         </div>
                     </div>

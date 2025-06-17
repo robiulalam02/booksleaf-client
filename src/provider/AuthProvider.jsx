@@ -19,6 +19,7 @@ const AuthProvider = ({ children }) => {
     }
 
     const updateUserProfile = (name, profile_photo) => {
+        setLoading(true);
         return updateProfile(auth.currentUser, {
             displayName: name,
             photoURL: profile_photo
@@ -26,18 +27,14 @@ const AuthProvider = ({ children }) => {
     }
 
     const userSignOut = () => {
+        setLoading(true);
         return signOut(auth);
     }
 
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth, currentUser=>{
-            if (currentUser) {
-                setUser(currentUser);
-                setLoading(false);
-            } else{
-                setUser(null);
-                setLoading(true);
-            }
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, currentUser => {
+            setUser(currentUser);
+            setLoading(false);
         });
 
         return () => unsubscribe;

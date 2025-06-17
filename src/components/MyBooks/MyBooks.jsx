@@ -7,7 +7,7 @@ import { MdOutlineLibraryAdd } from 'react-icons/md';
 import Loading from '../Loading/Loading';
 
 const MyBooks = () => {
-    const { user } = use(AuthContext);
+    const { user,loading } = use(AuthContext);
     const [booksData, setBooksData] = useState([]);
     const navigate = useNavigate();
     useEffect(() => {
@@ -19,28 +19,29 @@ const MyBooks = () => {
         }
     }, [user?.email])
 
-    if (!booksData) {
-        return (
-            <>
-                <div className='flex flex-col items-center gap-5 my-10'>
-                    <h1 className='text-2xl text-error'>No Books In Your Bookshelf !!</h1>
-                    <img className='w-52' src="/assets/empty_bookshelf.png" alt="" />
-                    <button onClick={() => navigate('/addbook')} className='flex items-center gap-1 text-secondary bg-primary rounded-sm mt-5 px-4 py-2'><span><MdOutlineLibraryAdd /></span> Add a Book</button>
-                </div>
-            </>
-        )
+    if (loading) {
+        return <Loading />
     }
 
     return (
         <>
-            <div className='max-w-screen-xl h-dvh mx-auto mt-10 mb-20'>
-                <div className='text-center'>
-                    <h1 className='cormorant text-3xl font-medium'>My Added Books</h1>
-                </div>
+            {
+                booksData?.length === 0 ?
+                    <div className='flex flex-col items-center gap-5 my-10'>
+                        <h1 className='text-2xl text-error'>No Books In Your Bookshelf !!</h1>
+                        <img className='w-52' src="/assets/empty_bookshelf.png" alt="" />
+                        <button onClick={() => navigate('/addbook')} className='flex items-center gap-1 text-secondary bg-primary rounded-sm mt-5 px-4 py-2'><span><MdOutlineLibraryAdd /></span> Add a Book</button>
+                    </div>
+                    :
+                    <div className='max-w-screen-xl h-dvh mx-auto mt-10 mb-20'>
+                        <div className='text-center'>
+                            <h1 className='cormorant text-3xl font-medium'>My Added Books</h1>
+                        </div>
 
-                <MyBooksContainer booksData={booksData} />
+                        <MyBooksContainer booksData={booksData} />
 
-            </div>
+                    </div>
+            }
         </>
     );
 };

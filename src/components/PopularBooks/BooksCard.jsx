@@ -15,7 +15,7 @@ const BooksCard = ({ book }) => {
             >
                 <TbMilitaryRank />
 
-                <p className="text-sm whitespace-nowrap">{book.upvotes}+ upvotes</p>
+                <p className="text-sm whitespace-nowrap">{parseInt(book.upvotes)}+ upvotes</p>
             </span>
             <div className='w-full '>
                 <h3 className='cormorant text-2xl font-semibold overflow-hidden whitespace-nowrap text-ellipsis truncate'>{book?.book_title}</h3>

@@ -11,9 +11,12 @@ const AddBook = () => {
         e.preventDefault();
 
         const form = new FormData(e.target);
-        const bookData = Object.fromEntries(form.entries());
+        const data = Object.fromEntries(form.entries());
 
-        console.log(bookData);
+        const bookData = {
+            ...data,
+            upvotes: 0
+        }
 
         // store book data to mongoDB
 
@@ -63,7 +66,7 @@ const AddBook = () => {
                                 <option>Select Category</option>
                                 <option value="fiction">Fiction</option>
                                 <option value="fantasy">Fantasy</option>
-                                <option value="nonfiction">Non-Fiction</option>
+                                <option value="non-fiction">Non-Fiction</option>
                                 <option value="history">History</option>
                                 <option value="thriller">Thriller</option>
                                 <option value="science">Science</option>
@@ -90,7 +93,7 @@ const AddBook = () => {
                         </div>
                         <div className='flex flex-col gap-2'>
                             <label>User<span className='text-error'>*</span></label>
-                            <input required readOnly defaultValue={user?.displayName} className='w-full bg-slate-50 shadow h-10 px-5' type="text" name="total_name" placeholder='Enter Total Page' />
+                            <input required readOnly defaultValue={user?.displayName} className='w-full bg-slate-50 shadow h-10 px-5' type="text" name="user_name" placeholder='Enter Total Page' />
                         </div>
                         <div className='flex flex-col gap-2'>
                             <label>User Email<span className='text-error'>*</span></label>
@@ -98,7 +101,7 @@ const AddBook = () => {
                         </div>
                         <div className='flex flex-col gap-2'>
                             <label>Upvotes<span className='text-error'>*</span></label>
-                            <input required readOnly value="0" className='w-full bg-slate-50 shadow h-10 px-5' type="number" name="upvotes" placeholder='0 upvotes' />
+                            <input required readOnly className='w-full bg-slate-50 shadow h-10 px-5' type="number" name="upvotes" placeholder='0 upvotes' />
                         </div>
                         <div className='flex flex-col gap-2'>
                             <label>Book Overview<span className='text-error'>*</span></label>

@@ -1,12 +1,13 @@
 import React, { use, useState } from 'react';
 import { FaEye, FaEyeSlash } from 'react-icons/fa';
-import { useNavigate } from 'react-router';
+import { useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../provider/AuthContext';
 import Swal from 'sweetalert2';
 
 const Login = () => {
     const { userSignIn } = use(AuthContext)
     const navigate = useNavigate();
+    const location = useLocation();
     const [showPass, setShowPass] = useState(false);
 
 
@@ -31,7 +32,7 @@ const Login = () => {
                         timer: 1500
                     });
                     e.target.reset();
-                    navigate('/')
+                    navigate(`${location.state ? location.state : '/'}`)
                 }
             })
             .catch(err => {

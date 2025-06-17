@@ -6,9 +6,12 @@ import Loading from '../components/Loading/Loading';
 import TrustedCompany from '../components/TrustedCompany/TrustedCompany';
 import QuoteOfTheday from '../components/QuoteOfTheday/QuoteOfTheday';
 
-const booksPromise = fetch('http://localhost:3000/books').then(res => res.json())
+const booksPromise = fetch('http://localhost:3000/books').then(res => res.json());
+
+const categoriesPromise = fetch('/category.json').then(res => res.json());
 
 const Home = () => {
+    
     return (
         <>
             <section className='bg-primary'>
@@ -23,10 +26,10 @@ const Home = () => {
 
             <section>
                 <Suspense fallback={<Loading />}>
-                    <FeaturedCategories booksPromise={booksPromise} />
+                    <FeaturedCategories categoriesPromise={categoriesPromise} />
                 </Suspense>
             </section>
-            
+
             <section>
                 <TrustedCompany />
             </section>

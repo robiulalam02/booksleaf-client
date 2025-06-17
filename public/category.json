@@ -1,0 +1,43 @@
+[
+  {
+    "id": 1,
+    "name": "Fiction",
+    "image": "https://i.ibb.co.com/C395zpz0/fiction.png"
+  },
+  {
+    "id": 2,
+    "name": "Non-Fiction",
+    "image": "https://i.ibb.co.com/6cc9gvH9/non-fiction.png"
+  },
+  {
+    "id": 3,
+    "name": "Fantasy",
+    "image": "https://i.ibb.co.com/gbPrFsHc/fantasy.png"
+  },
+  {
+    "id": 4,
+    "name": "Science",
+    "image": "https://i.ibb.co.com/zHGKFsPh/science.png"
+  },
+  {
+    "id": 5,
+    "name": "History",
+    "image": "https://i.ibb.co.com/9kYk8h3Q/history.png"
+  },
+  {
+    "id": 6,
+    "name": "Thriller",
+    "image": "https://i.ibb.co.com/hxF40TdN/thriller.png"
+  },
+  {
+    "id": 7,
+    "name": "Philosophy",
+    "image": "https://i.ibb.co.com/Kpr1Ym7s/philosophy.png"
+  },
+  {
+    "id": 8,
+    "name": "Business",
+    "image": "https://i.ibb.co.com/fzyRmcmC/business.png"
+  }
+]
+

@@ -9,6 +9,7 @@ import AddBook from "../components/AddBook/AddBook";
 import MyBooks from "../components/MyBooks/MyBooks";
 import UpdateBook from "../components/UpdateBook/UpdateBook";
 import Profile from "../components/Profile/Profile";
+import Private_Route from "./Private_Route";
 
 export const router = createBrowserRouter([
   {
@@ -25,19 +26,27 @@ export const router = createBrowserRouter([
         },
         {
           path: '/addbook',
-          Component: AddBook
+          element: <Private_Route>
+            <AddBook />
+          </Private_Route>
         },
         {
           path: '/mybooks',
-          Component: MyBooks
+          element: <Private_Route>
+            <MyBooks />
+          </Private_Route>
         },
         {
           path: '/profile',
-          Component: Profile
+          element: <Private_Route>
+            <Profile />
+          </Private_Route>
         },
         {
           path: '/updatebook/:id',
-          Component: UpdateBook,
+          element: <Private_Route>
+            <UpdateBook />
+          </Private_Route>,
           loader: ({params}) => fetch(`http://localhost:3000/books/${params.id}`)
         },
         {
@@ -50,7 +59,9 @@ export const router = createBrowserRouter([
         },
         {
           path: '/bookDetails/:id',
-          Component: BookDetails,
+          element: <Private_Route>
+            <BookDetails />
+          </Private_Route>,
           loader: ({params}) => fetch(`http://localhost:3000/books/${params.id}`)
         }
     ]
