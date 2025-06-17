@@ -5,7 +5,7 @@ import { AuthContext } from '../../provider/AuthContext';
 import Swal from 'sweetalert2';
 
 const Login = () => {
-    const { userSignIn } = use(AuthContext)
+    const { userSignIn, googleSignIn } = use(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
     const [showPass, setShowPass] = useState(false);
@@ -38,6 +38,21 @@ const Login = () => {
             .catch(err => {
                 console.log(err);
             })
+    }
+
+    const handleGoogleSignIn = () => {
+        googleSignIn()
+            .then(() => {
+                Swal.fire({
+                    position: "center",
+                    icon: "success",
+                    title: "user register successful",
+                    showConfirmButton: false,
+                    timer: 1500
+                });
+                navigate(`${location.state ? location.state : '/'}`)
+            })
+
     }
 
     return (
@@ -125,7 +140,7 @@ const Login = () => {
                     </div>
 
                     <div class="mt-6 grid grid-cols-2 gap-3">
-                        <button type="button"
+                        <button onClick={handleGoogleSignIn} type="button"
                             class="w-full flex items-center justify-center px-4 py-2 border border-gray-300 rounded-md shadow-sm text-sm font-medium text-gray-700 bg-white hover:bg-gray-50">
                             <svg class="h-5 w-5 mr-2" viewBox="0 0 24 24" fill="currentColor">
                                 <path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4" />

@@ -5,9 +5,9 @@ import axios from 'axios';
 import Swal from 'sweetalert2';
 import { toast } from 'react-toastify';
 
-const ReviewForm = ({ bookId, setReviews, postedUser }) => {
+const ReviewForm = ({ bookId, setReviews, postedUser, myReview }) => {
 
-    const { user } = use(AuthContext)
+    const { user } = use(AuthContext);
 
     const handleSubmitReview = e => {
         e.preventDefault();
@@ -31,7 +31,7 @@ const ReviewForm = ({ bookId, setReviews, postedUser }) => {
             return toast.error('Oops! You can’t review a book you added!')
         }
 
-        if (review.user_email === user?.email) {
+        if (myReview?.user_email === user?.email) {
             return toast.error('You’ve already submitted a review for this item!')
         }
 
@@ -58,7 +58,6 @@ const ReviewForm = ({ bookId, setReviews, postedUser }) => {
     }
 
     return (
-        <div class="min-h-screen bg-primary flex items-center justify-center p-6">
             < form onSubmit={handleSubmitReview} class="bg-gray-50 text-gray-900 p-8 rounded-2xl shadow-2xl max-w-xl w-full space-y-6 backdrop-blur-md">
 
                 <h2 class="text-3xl font-bold text-center ">Write a Review</h2>
@@ -71,7 +70,6 @@ const ReviewForm = ({ bookId, setReviews, postedUser }) => {
                     </button>
                 </div>
             </form>
-        </div>
     );
 };
 

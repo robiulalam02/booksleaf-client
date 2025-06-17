@@ -13,15 +13,12 @@ const Bookshelf = () => {
 
     useEffect(() => {
         const fetchBooks = async () => {
-            setLoading(true);
             try {
                 const res = await fetch('http://localhost:3000/books');
                 const data = await res.json();
                 setBooksData(data);
             } catch (error) {
                 console.error('Failed to fetch books:', error);
-            } finally {
-                setLoading(false);
             }
         };
 

@@ -7,7 +7,7 @@ import { MdOutlineLibraryAdd } from 'react-icons/md';
 import Loading from '../Loading/Loading';
 
 const MyBooks = () => {
-    const { user,loading } = use(AuthContext);
+    const { user } = use(AuthContext);
     const [booksData, setBooksData] = useState([]);
     const navigate = useNavigate();
     useEffect(() => {
@@ -18,10 +18,6 @@ const MyBooks = () => {
                 })
         }
     }, [user?.email])
-
-    if (loading) {
-        return <Loading />
-    }
 
     return (
         <>

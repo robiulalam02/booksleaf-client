@@ -9,6 +9,7 @@ import Slide3 from '../Slides/Slide3';
 
 const Hero = () => {
     const [next, setNext] = useState(null);
+    const [activeIndex, setActiveIndex] = useState(0);
     return (
         <div className='text-white h-[680px] relative'>
             <div className='max-w-screen-xl mx-auto'>
@@ -18,15 +19,18 @@ const Hero = () => {
                     loop={true}
                     slidesPerView={1}
                     onSwiper={setNext}
+                    onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                 >
                     <SwiperSlide>
-                        <Slide1 />
+                        <Slide1 isActive={activeIndex === 0} />
                     </SwiperSlide>
+
                     <SwiperSlide>
-                        <Slide2 />
+                        <Slide2 isActive={activeIndex === 1} />
                     </SwiperSlide>
+
                     <SwiperSlide>
-                        <Slide3 />
+                        <Slide3 isActive={activeIndex === 2} />
                     </SwiperSlide>
                 </Swiper>
             </div>

@@ -21,9 +21,6 @@ const FeaturedCategories = ({categoriesPromise}) => {
                 <h2 className='cormorant text-4xl font-semibold'>Featured Categories</h2>
             </div>
             <div className='grid grid-cols-4 gap-5 mt-10 max-w-screen-xl mx-auto'>
-                {/* <Suspense fallback={<Loading />}>
-                    <CategoryCard categoriesPromise={categoriesPromise} />
-                </Suspense> */}
                 {
                     categories?.map(category=> <CategoryCard key={category.id} category={category} categoryCount={categoryCount} />)
                 }

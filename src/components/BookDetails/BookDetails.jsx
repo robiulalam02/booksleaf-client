@@ -8,10 +8,12 @@ import { GoArrowDown } from "react-icons/go";
 import { use } from 'react';
 import { AuthContext } from '../../provider/AuthContext';
 import { toast } from 'react-toastify';
+import MyReviewCard from '../ReviewsCard/MyReviewCard';
 
 const BookDetails = () => {
-    const {user} = use(AuthContext)
+    const { user } = use(AuthContext)
     const book = useLoaderData();
+    const [currentStatus, setCurrentStatus] = useState(book?.reading_status);
     console.log(book._id);
     const [upvoteCount, setUpvoteCount] = useState(book.upvotes);
     const [reviews, setReviews] = useState([]);
@@ -27,7 +29,7 @@ const BookDetails = () => {
     }, [book._id])
 
     const handleUpvote = () => {
-        if (book.user_email===user?.email) {
+        if (book.user_email === user?.email) {
             return toast.error('Oops! You can’t upvote your own added book!')
         }
         const update = {
@@ -37,6 +39,25 @@ const BookDetails = () => {
             .then(res => {
                 if (res.data.modifiedCount) {
                     setUpvoteCount(upvoteCount + 1)
+                }
+            })
+    }
+
+    const myReview = reviews?.find(item => item.user_email === user?.email);
+
+    const handleReadingStatus = e => {
+        console.log(e.target.value);
+
+        const newStatus = {
+            status: e.target.value
+        }
+
+        // update status in database
+        axios.patch(`http://localhost:3000/books/${book._id}`, newStatus)
+            .then(res => {
+                if (res.data.modifiedCount) {
+                    toast.success('Reading Status Updated Successfully')
+                    setCurrentStatus(newStatus.status)
                 }
             })
     }
@@ -84,15 +105,27 @@ const BookDetails = () => {
                         </div>
                         <div className='flex items-center gap-3 text-xl mt-5'>
                             <p className=''>Reading Status:</p>
-                            <p className={`${book.reading_status === "Reading" ? 'text-success' : 'text-warning'}`}>{book.reading_status}</p>
+                            <p className={`${currentStatus === "Reading" ? 'text-success' : 'text-warning'}`}>{currentStatus}</p>
                         </div>
                     </div>
-                    <div>
+                    <div className='flex items-center gap-5'>
                         <button onClick={handleUpvote} class="relative inline-flex items-center justify-center w-5/12 py-4 overflow-hidden text-lg tracking-tighter text-black border border-secondary group">
                             <span class="absolute w-0 h-0 transition-all duration-300 ease-out bg-secondary  group-hover:w-full group-hover:h-full"></span>
 
                             <span class="relative font-medium">UPVOTE</span>
                         </button>
+
+                        {
+                            book.user_email === user?.email &&
+                            <div className='text-center flex flex-col'>
+                                <span className='mb-2'>update status:</span>
+                                <select defaultValue={book.reading_status} onChange={handleReadingStatus} className='border border-success  py-2 px-4 rounded' name="" >
+                                    <option value="read">Read</option>
+                                    <option value="reading">Reading</option>
+                                    <option value="want-to-read">Want to Read</option>
+                                </select>
+                            </div>
+                        }
                     </div>
                 </div>
             </div>
@@ -116,8 +149,16 @@ const BookDetails = () => {
                 }
             </div>
 
-            <div>
-                <ReviewForm bookId={book._id} setReviews={setReviews} postedUser={book.user_email} />
+            <div className='min-h-screen bg-primary flex items-center justify-center p-6 '>
+                {
+                    myReview ?
+                        <div className='w-xl'>
+                            <h1 className='text-center mb-10 text-3xl text-secondary'>My Posted Reviews</h1>
+                            <MyReviewCard reviewData={myReview} reviews={reviews} setReviews={setReviews} />
+                        </div>
+                        :
+                        <ReviewForm bookId={book._id} setReviews={setReviews} postedUser={book.user_email} myReview={myReview} />
+                }
             </div>
         </div>
     );
