@@ -1,7 +1,6 @@
 import React from 'react';
 
 const CategoryCard = ({ category, categoryCount }) => {
-    console.log(categoryCount);
     return (
         <>
             <div className='border-2 border-secondary rounded-xl flex flex-col items-center p-5 gap-2'>

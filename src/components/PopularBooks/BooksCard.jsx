@@ -22,10 +22,10 @@ const BooksCard = ({ book }) => {
             </div>
             <p>{book.book_author}</p>
 
-            <button onClick={()=> navigate(`/bookDetails/${book._id}`)} href="#_" class="relative inline-flex items-center justify-center w-full py-4 overflow-hidden text-lg tracking-tighter text-black border border-secondary group">
-                <span class="absolute w-0 h-0 transition-all duration-300 ease-out bg-secondary  group-hover:w-full group-hover:h-full"></span>
+            <button onClick={()=> navigate(`/bookDetails/${book._id}`)} href="#_" className="relative inline-flex items-center justify-center w-full py-4 overflow-hidden text-lg tracking-tighter text-black border border-secondary group">
+                <span className="absolute w-0 h-0 transition-all duration-300 ease-out bg-secondary  group-hover:w-full group-hover:h-full"></span>
                 
-                <span class="relative">Books Detail</span>
+                <span className="relative">Books Detail</span>
             </button>
 
             {/* <button className='border border-secondary w-full py-4'>Books Detail</button> */}

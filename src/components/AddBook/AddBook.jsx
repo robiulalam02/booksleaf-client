@@ -20,7 +20,7 @@ const AddBook = () => {
 
         // store book data to mongoDB
 
-        axios.post('http://localhost:3000/books', bookData)
+        axios.post('https://books-leaf-server.vercel.app/books', bookData)
             .then(res => {
                 if (res.data.insertedId) {
                     Swal.fire({

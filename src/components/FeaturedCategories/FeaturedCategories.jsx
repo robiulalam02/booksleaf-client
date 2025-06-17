@@ -9,7 +9,7 @@ const FeaturedCategories = ({categoriesPromise}) => {
     const [categoryCount, setCategoryCount] = useState([]);
 
     useEffect(()=>{
-        axios.get('http://localhost:3000/books/categories')
+        axios.get('https://books-leaf-server.vercel.app/books/categories')
         .then(res=>{
             setCategoryCount(res.data)
         })

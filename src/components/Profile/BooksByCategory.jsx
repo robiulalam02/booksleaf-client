@@ -1,8 +1,6 @@
 import React from 'react';
 
 const BooksByCategory = ({ book, byCategory }) => {
-    console.log(book);
-    console.log(byCategory);
     const { category } = book;
 
     return (

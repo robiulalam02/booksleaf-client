@@ -12,12 +12,16 @@ const MyBooks = () => {
     const navigate = useNavigate();
     useEffect(() => {
         if (user?.email) {
-            axios.get(`http://localhost:3000/books?user_email=${user?.email}`)
+            axios.get(`https://books-leaf-server.vercel.app/mybooks?user_email=${user?.email}`, {
+                headers: {
+                    Authorization: `Bearer ${user?.accessToken}`
+                }
+            })
                 .then(res => {
                     setBooksData(res.data);
                 })
         }
-    }, [user?.email])
+    }, [user?.email, user?.accessToken])
 
     return (
         <>

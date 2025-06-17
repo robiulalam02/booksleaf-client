@@ -14,15 +14,13 @@ const BookDetails = () => {
     const { user } = use(AuthContext)
     const book = useLoaderData();
     const [currentStatus, setCurrentStatus] = useState(book?.reading_status);
-    console.log(book._id);
     const [upvoteCount, setUpvoteCount] = useState(book.upvotes);
     const [reviews, setReviews] = useState([]);
 
     useEffect(() => {
         if (book._id) {
-            axios.get(`http://localhost:3000/reviews/${book._id}`)
+            axios.get(`https://books-leaf-server.vercel.app/reviews/${book._id}`)
                 .then(res => {
-                    console.log(res.data);
                     setReviews(res.data);
                 })
         }
@@ -35,7 +33,7 @@ const BookDetails = () => {
         const update = {
             upvote: true
         }
-        axios.patch(`http://localhost:3000/upvote/${book._id}`, update)
+        axios.patch(`https://books-leaf-server.vercel.app/upvote/${book._id}`, update)
             .then(res => {
                 if (res.data.modifiedCount) {
                     setUpvoteCount(upvoteCount + 1)
@@ -46,14 +44,13 @@ const BookDetails = () => {
     const myReview = reviews?.find(item => item.user_email === user?.email);
 
     const handleReadingStatus = e => {
-        console.log(e.target.value);
 
         const newStatus = {
             status: e.target.value
         }
 
         // update status in database
-        axios.patch(`http://localhost:3000/books/${book._id}`, newStatus)
+        axios.patch(`https://books-leaf-server.vercel.app/books/${book._id}`, newStatus)
             .then(res => {
                 if (res.data.modifiedCount) {
                     toast.success('Reading Status Updated Successfully')
@@ -109,10 +106,10 @@ const BookDetails = () => {
                         </div>
                     </div>
                     <div className='flex items-center gap-5'>
-                        <button onClick={handleUpvote} class="relative inline-flex items-center justify-center w-5/12 py-4 overflow-hidden text-lg tracking-tighter text-black border border-secondary group">
-                            <span class="absolute w-0 h-0 transition-all duration-300 ease-out bg-secondary  group-hover:w-full group-hover:h-full"></span>
+                        <button onClick={handleUpvote} className="relative inline-flex items-center justify-center w-5/12 py-4 overflow-hidden text-lg tracking-tighter text-black border border-secondary group">
+                            <span className="absolute w-0 h-0 transition-all duration-300 ease-out bg-secondary  group-hover:w-full group-hover:h-full"></span>
 
-                            <span class="relative font-medium">UPVOTE</span>
+                            <span className="relative font-medium">UPVOTE</span>
                         </button>
 
                         {
@@ -131,7 +128,7 @@ const BookDetails = () => {
             </div>
 
             <div className='max-w-screen-xl mx-auto my-20'>
-                <h2 class="cormorant font-black text-black text-center text-4xl leading-none  max-w-2xl mx-auto mb-12">What Readers
+                <h2 className="cormorant font-black text-black text-center text-4xl leading-none  max-w-2xl mx-auto mb-12">What Readers
                     Are Saying</h2>
                 {
                     reviews?.length === 0 ?

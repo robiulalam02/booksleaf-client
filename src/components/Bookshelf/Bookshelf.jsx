@@ -9,12 +9,11 @@ const Bookshelf = () => {
     const { setLoading } = use(AuthContext);
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All');
-    console.log(selectedCategory);
-
+    
     useEffect(() => {
         const fetchBooks = async () => {
             try {
-                const res = await fetch('http://localhost:3000/books');
+                const res = await fetch('https://books-leaf-server.vercel.app/books');
                 const data = await res.json();
                 setBooksData(data);
             } catch (error) {

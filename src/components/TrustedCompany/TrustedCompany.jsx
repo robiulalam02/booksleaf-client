@@ -24,42 +24,42 @@ const TrustedCompany = () => {
                     <SwiperSlide style={{ height: '150px' }}>
                         <div className='flex justify-center items-center h-full'>
                             <div className='w-40 overflow-hidden'>
-                                <img className='w-full object-cover' src="/public/assets/Penguin_Random_House_logo.png" alt="" />
+                                <img className='w-full object-cover' src="/assets/Penguin_Random_House_logo.png" alt="" />
                             </div>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide style={{ height: '150px' }}>
                         <div className='flex justify-center items-center h-full'>
                             <div className='w-40 overflow-hidden'>
-                                <img className='w-full object-cover' src="/public/assets/HarperCollins.png" alt="" />
+                                <img className='w-full object-cover' src="/assets/HarperCollins.png" alt="" />
                             </div>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide style={{ height: '150px' }}>
                         <div className='flex justify-center items-center h-full'>
                             <div className='w-40 overflow-hidden'>
-                                <img className='w-full object-cover' src="/public/assets/1200px-Simon_and_Schuster.svg.webp" alt="" />
+                                <img className='w-full object-cover' src="/assets/1200px-Simon_and_Schuster.svg.webp" alt="" />
                             </div>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide style={{ height: '150px' }}>
                         <div className='flex justify-center items-center h-full'>
                             <div className='w-40 overflow-hidden'>
-                                <img className='w-full object-cover' src="/public/assets/barnes.png" alt="" />
+                                <img className='w-full object-cover' src="/assets/barnes.png" alt="" />
                             </div>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide style={{ height: '150px' }}>
                         <div className='flex justify-center items-center h-full'>
                             <div className='w-40 overflow-hidden'>
-                                <img className='w-full object-cover' src="/public/assets/190725_macmillan.png" alt="" />
+                                <img className='w-full object-cover' src="/assets/190725_macmillan.png" alt="" />
                             </div>
                         </div>
                     </SwiperSlide>
                     <SwiperSlide style={{ height: '150px' }}>
                         <div className='flex justify-center items-center h-full'>
                             <div className='w-40 overflow-hidden'>
-                                <img className='w-full object-cover' src="/public/assets/cropped-hachette-logo1.webp" alt="" />
+                                <img className='w-full object-cover' src="/assets/cropped-hachette-logo1.webp" alt="" />
                             </div>
                         </div>
                     </SwiperSlide>

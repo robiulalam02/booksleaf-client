@@ -26,11 +26,11 @@ const Hero = () => {
                     </SwiperSlide>
 
                     <SwiperSlide>
-                        <Slide2 isActive={activeIndex === 1} />
+                        <Slide2 />
                     </SwiperSlide>
 
                     <SwiperSlide>
-                        <Slide3 isActive={activeIndex === 2} />
+                        <Slide3 />
                     </SwiperSlide>
                 </Swiper>
             </div>

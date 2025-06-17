@@ -1,4 +1,11 @@
-export const myBooksPromise = email => {
-    return fetch(`http://localhost:3000/books?user_email=${email}`)
-        .then(res => res.json());
-}
+import { auth } from '../firebase/firebase.init';
+export const LoaderAPI = (url) => {
+
+  const token = auth.currentUser?.accessToken;
+
+  return fetch(url, {
+    headers: {
+      Authorization: `Bearer ${token}`,
+    },
+  });
+};

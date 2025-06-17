@@ -6,7 +6,6 @@ import Swal from 'sweetalert2';
 const Navbar = () => {
 
     const { user, userSignOut } = use(AuthContext);
-    console.log(user);
 
     const navigate = useNavigate();
 
@@ -50,7 +49,7 @@ const Navbar = () => {
                         </ul>
                     </div>
                     <button onClick={() => navigate('/')}>
-                        <img className='h-14' src="/public/assets/logo.png" alt="" />
+                        <img className='h-14' src="/assets/logo.png" alt="" />
                     </button>
                 </div>
                 <div className="navbar-center hidden lg:flex">

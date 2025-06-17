@@ -9,7 +9,6 @@ const UpdateBook = () => {
     const { user } = use(AuthContext);
     const book = useLoaderData();
     const navigate = useNavigate();
-    console.log(book);
 
     const handleUpdateBook = e => {
         e.preventDefault();
@@ -17,11 +16,9 @@ const UpdateBook = () => {
         const form = new FormData(e.target);
         const bookData = Object.fromEntries(form.entries());
 
-        console.log(bookData);
-
         // update book data in mongodb
 
-        axios.put(`http://localhost:3000/books/${book._id}`, bookData)
+        axios.put(`https://books-leaf-server.vercel.app/books/${book._id}`, bookData)
             .then(res => {
                 if (res.data.modifiedCount) {
                     Swal.fire({

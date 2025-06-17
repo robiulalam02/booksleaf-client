@@ -2,7 +2,6 @@ import React from 'react';
 import { FaQuoteLeft } from 'react-icons/fa';
 
 const ReviewsCard = ({ reviewData }) => {
-    console.log(reviewData);
     const { user_name, review, date } = reviewData;
     return (
         <div className='shadow-2xl p-10 flex flex-col justify-between gap-5 rounded-md '>

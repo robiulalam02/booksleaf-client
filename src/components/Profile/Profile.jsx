@@ -18,16 +18,20 @@ const Profile = () => {
 
     useEffect(() => {
         if (user?.email) {
-            axios.get(`http://localhost:3000/books?user_email=${user?.email}`)
+            axios.get(`https://books-leaf-server.vercel.app/mybooks?user_email=${user?.email}`, {
+                headers: {
+                    Authorization: `Bearer ${user?.accessToken}`
+                }
+            })
                 .then(res => {
                     setMyBooks(res.data)
                 })
         }
-    }, [user?.email])
+    }, [user?.email, user?.accessToken])
 
     useEffect(() => {
         if (user?.email) {
-            axios.get(`http://localhost:3000/mybooks/categories?user_email=${user?.email}`)
+            axios.get(`https://books-leaf-server.vercel.app/mybooks/categories?user_email=${user?.email}`)
                 .then(res => {
                     const categories = [];
                     categories.push(res.data)

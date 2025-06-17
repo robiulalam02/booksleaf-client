@@ -26,8 +26,8 @@ const Slide1 = () => {
                         initial={{ rotate: 0 }}
                         whileInView={{ rotate: -12 }}
                         transition={{ duration: .8, ease: 'easeInOut' }}
-                        className='h-[440px]' src="/public/assets/book-1.jpg" alt="" />
-                    <img className='h-full absolute top-14 left-40 ' src="/public/assets/book-2.jpg" alt="" />
+                        className='h-[440px]' src="/assets/book-1.jpg" alt="" />
+                    <img className='h-full absolute top-14 left-40 ' src="/assets/book-2.jpg" alt="" />
                 </div>
             </div>
         </div>

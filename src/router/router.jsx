@@ -10,60 +10,58 @@ import MyBooks from "../components/MyBooks/MyBooks";
 import UpdateBook from "../components/UpdateBook/UpdateBook";
 import Profile from "../components/Profile/Profile";
 import Private_Route from "./Private_Route";
+import { LoaderAPI } from "../API/LoaderAPI";
 
 export const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
     children: [
-        {
-            index: true,
-            Component: Home
-        },
-        {
-          path: '/bookshelf',
-          Component: Bookshelf
-        },
-        {
-          path: '/addbook',
-          element: <Private_Route>
-            <AddBook />
-          </Private_Route>
-        },
-        {
-          path: '/mybooks',
-          element: <Private_Route>
-            <MyBooks />
-          </Private_Route>
-        },
-        {
-          path: '/profile',
-          element: <Private_Route>
-            <Profile />
-          </Private_Route>
-        },
-        {
-          path: '/updatebook/:id',
-          element: <Private_Route>
-            <UpdateBook />
-          </Private_Route>,
-          loader: ({params}) => fetch(`http://localhost:3000/books/${params.id}`)
-        },
-        {
-          path: '/auth/login',
-          Component: Login
-        },
-        {
-          path: '/auth/register',
-          Component: Register
-        },
-        {
-          path: '/bookDetails/:id',
-          element: <Private_Route>
-            <BookDetails />
-          </Private_Route>,
-          loader: ({params}) => fetch(`http://localhost:3000/books/${params.id}`)
+      {
+        index: true,
+        Component: Home
+      },
+      {
+        path: '/bookshelf',
+        Component: Bookshelf
+      },
+      {
+        path: '/addbook',
+        element: <Private_Route>
+          <AddBook />
+        </Private_Route>
+      },
+      {
+        path: '/mybooks',
+        element: <Private_Route>
+          <MyBooks />
+        </Private_Route>
+      },
+      {
+        path: '/profile',
+        element: <Private_Route>
+          <Profile />
+        </Private_Route>
+      },
+
+      {
+        path: '/auth/login',
+        Component: Login
+      },
+      {
+        path: '/auth/register',
+        Component: Register
+      },
+      {
+        path: '/bookDetails/:id',
+        element: <Private_Route>
+          <BookDetails />
+        </Private_Route>,
+        loader: async ({ params }) => {
+          return await LoaderAPI(`https://books-leaf-server.vercel.app/books/${params.id}`);
         }
+
+      }
     ]
   },
 ]);

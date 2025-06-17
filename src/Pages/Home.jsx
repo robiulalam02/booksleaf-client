@@ -6,7 +6,7 @@ import Loading from '../components/Loading/Loading';
 import TrustedCompany from '../components/TrustedCompany/TrustedCompany';
 import QuoteOfTheday from '../components/QuoteOfTheday/QuoteOfTheday';
 
-const booksPromise = fetch('http://localhost:3000/books').then(res => res.json());
+const booksPromise = fetch('https://books-leaf-server.vercel.app/books').then(res => res.json());
 
 const categoriesPromise = fetch('/category.json').then(res => res.json());
 
