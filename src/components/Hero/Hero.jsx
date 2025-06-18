@@ -18,6 +18,7 @@ const Hero = () => {
                     style={{ height: '640px' }}
                     loop={true}
                     slidesPerView={1}
+                    spaceBetween={50}
                     onSwiper={setNext}
                     onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                 >
@@ -34,7 +35,7 @@ const Hero = () => {
                     </SwiperSlide>
                 </Swiper>
             </div>
-            <div className='w-full h-full z-50 absolute top-0 flex justify-between items-center px-12'>
+            <div className='w-full h-full z-50 absolute top-0 flex justify-between items-center px-4 lg:px-12'>
                 <button onClick={() => next && next.slidePrev()}>
                     <span className='hover:text-secondary'>
                         <MdArrowBackIosNew size={24} />

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useLoaderData } from 'react-router';
+import { useParams } from 'react-router';
 import { IoBookSharp } from "react-icons/io5";
 import axios from 'axios';
 import ReviewForm from '../ReviewForm/ReviewForm';
@@ -9,19 +9,46 @@ import { use } from 'react';
 import { AuthContext } from '../../provider/AuthContext';
 import { toast } from 'react-toastify';
 import MyReviewCard from '../ReviewsCard/MyReviewCard';
+import Loading from '../Loading/Loading';
+import { Helmet } from 'react-helmet-async';
 
 const BookDetails = () => {
     const { user } = use(AuthContext)
-    const book = useLoaderData();
-    const [currentStatus, setCurrentStatus] = useState(book?.reading_status);
-    const [upvoteCount, setUpvoteCount] = useState(book.upvotes);
+    const { id } = useParams();
+    const [book, setBook] = useState([]);
+    const [upvoteCount, setUpvoteCount] = useState('');
     const [reviews, setReviews] = useState([]);
+    const token = user?.accessToken;
+    const [currentStatus, setCurrentStatus] = useState('');
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (token) {
+            axios.get(`https://books-leaf-server.vercel.app/books/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                .then(res => {
+                    setBook(res.data);
+                    setCurrentStatus(book?.reading_status);
+                    setUpvoteCount(book?.upvotes)
+                    setLoading(false);
+                })
+                .catch(err => {
+                    console.log('error message:', err);
+                    setLoading(false);
+                })
+        }
+    }, [id, token, book?.reading_status, book?.upvotes]);
+
 
     useEffect(() => {
         if (book._id) {
             axios.get(`https://books-leaf-server.vercel.app/reviews/${book._id}`)
                 .then(res => {
                     setReviews(res.data);
+                    setLoading(false);
                 })
         }
     }, [book._id])
@@ -59,19 +86,26 @@ const BookDetails = () => {
             })
     }
 
+    if (loading) {
+        return <Loading />
+    }
+
     return (
         <div className='my-20'>
-            <div className='flex items-center gap-20 py-10 max-w-screen-xl mx-auto'>
+            <Helmet>
+                <title>Book Details</title>
+            </Helmet>
+            <div className='flex flex-col lg:flex-row items-center gap-20 py-10 max-w-screen-xl mx-auto px-4 lg:px-0'>
                 <div>
-                    <div className='relative border-10 h-[600px] w-[450px] border-secondary p-6'>
+                    <div className='relative border-10 h-[300px] w-[200px] md:h-[600px] md:w-[450px] border-secondary p-6'>
                         <img style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px' }} className='h-full w-full absolute z-50 -top-10 right-12' src={book.cover_photo} alt="" />
                     </div>
                 </div>
-                <div className='flex flex-col gap-10'>
+                <div className='flex flex-col gap-10 px-4 md:px-0'>
                     <div>
                         <div>
-                            <h1 className='cormorant text-5xl font-bold text-primary'>{book.book_title}</h1>
-                            <p className='text-2xl text-secondary mt-2'>By {book.book_author}</p>
+                            <h1 className='cormorant text-3xl md:text-5xl font-bold text-primary'>{book.book_title}</h1>
+                            <p className='text-xl md:text-2xl text-secondary mt-2'>By {book.book_author}</p>
                         </div>
                         <div className='mt-5'>
                             <div className='flex items-center gap-2'>
@@ -86,7 +120,12 @@ const BookDetails = () => {
                         </div>
                         <div className='flex items-center gap-3 text-xl mt-5'>
                             <p className=''>Total Upvotes:</p>
-                            <p className='text-gray-500'>{upvoteCount}</p>
+                            {
+                                !upvoteCount ?
+                                    <p className='text-gray-500'>no upvotes</p>
+                                    :
+                                    <p className='text-gray-500'>{upvoteCount}</p>
+                            }
                         </div>
                         <div className='flex items-center gap-3 text-xl mt-5'>
                             <p className=''>Book Category:</p>
@@ -102,7 +141,12 @@ const BookDetails = () => {
                         </div>
                         <div className='flex items-center gap-3 text-xl mt-5'>
                             <p className=''>Reading Status:</p>
-                            <p className={`${currentStatus === "Reading" ? 'text-success' : 'text-warning'}`}>{currentStatus}</p>
+                            {
+                                !currentStatus ?
+                                    <span className="loading loading-bars loading-xs"></span>
+                                    :
+                                    <p className="text-success capitalize">{currentStatus}</p>
+                            }
                         </div>
                     </div>
                     <div className='flex items-center gap-5'>
@@ -127,8 +171,8 @@ const BookDetails = () => {
                 </div>
             </div>
 
-            <div className='max-w-screen-xl mx-auto my-20'>
-                <h2 className="cormorant font-black text-black text-center text-4xl leading-none  max-w-2xl mx-auto mb-12">What Readers
+            <div className='max-w-screen-xl mx-auto my-20 px-4 lg:px-0'>
+                <h2 className="cormorant font-black text-black text-center text-2xl md:text-4xl leading-none  max-w-2xl mx-auto mb-12">What Readers
                     Are Saying</h2>
                 {
                     reviews?.length === 0 ?
@@ -137,7 +181,7 @@ const BookDetails = () => {
                             <span><GoArrowDown /></span>
                         </div>
                         :
-                        <div className='grid grid-cols-3 gap-5'>
+                        <div className='grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 '>
                             {/* <ReviewsCard /> */}
                             {
                                 reviews?.map(rev => <ReviewsCard key={rev._id} reviewData={rev} />)

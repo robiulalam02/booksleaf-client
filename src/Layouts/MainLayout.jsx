@@ -7,6 +7,7 @@ import Footer from '../components/Footer/Footer';
 import Loading from '../components/Loading/Loading';
 import { use } from 'react';
 import { AuthContext } from '../provider/AuthContext';
+import ScrollToTop from '../components/ScrollToTop/ScrollToTop';
 
 
 const MainLayout = () => {
@@ -29,6 +30,7 @@ const MainLayout = () => {
     
     return (
         <>
+            <ScrollToTop />
             <ToastContainer />
             <header>
                 <Navbar />

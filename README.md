@@ -66,6 +66,7 @@ The app helps readers organize their reading journey with features like reading 
 - **recharts** – Charting in Profile page
 - **sweetalert2** / **react-hot-toast** – Alert and toast notifications
 - **dotenv** – For env-based secure config
+- **react-tostify** – for stylish success/error messages
 
 ### Server
 - **express** – Backend server
@@ -73,7 +74,6 @@ The app helps readers organize their reading journey with features like reading 
 - **cors** – Handle CORS policies
 - **dotenv** – Environment variable handling
 - **jsonwebtoken** – JWT handling
-- **bcrypt** – (optional if implementing password hashing)
 
 ---
 

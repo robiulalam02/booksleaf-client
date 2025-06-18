@@ -16,10 +16,23 @@ const TrustedCompany = () => {
             <div className='mt-20'>
                 <Swiper
                     modules={[Autoplay]}
-                    spaceBetween={0}
-                    slidesPerView={4}
+                    spaceBetween={4}
                     autoplay={{ delay: 3000 }}
                     loop={true}
+                    breakpoints={{
+                        0: {
+                            slidesPerView: 1,
+                        },
+                        640: {
+                            slidesPerView: 2,
+                        },
+                        768: {
+                            slidesPerView: 3,
+                        },
+                        1024: {
+                            slidesPerView: 4,
+                        },
+                    }}
                 >
                     <SwiperSlide style={{ height: '150px' }}>
                         <div className='flex justify-center items-center h-full'>
@@ -70,10 +83,3 @@ const TrustedCompany = () => {
 };
 
 export default TrustedCompany;
-
-<>
-
-
-
-
-</>

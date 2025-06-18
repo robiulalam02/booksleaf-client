@@ -5,6 +5,8 @@ import { useNavigate } from 'react-router';
 import { AuthContext } from '../../provider/AuthContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const Register = () => {
     const navigate = useNavigate();
@@ -50,8 +52,8 @@ const Register = () => {
                         })
                 }
             })
-            .catch(error => {
-                console.log(error);
+            .catch(() => {
+                toast.error('user registration failed or email already in use')
             })
     }
 
@@ -67,12 +69,18 @@ const Register = () => {
                 });
                 navigate('/')
             })
+            .catch(() => {
+                toast.error('google login unsuccessful, please try again later...')
+            })
 
     }
 
     return (
-        <div className='max-w-screen-xl mx-auto h-screen mt-20'>
-            <div className='flex items-center justify-between gap-10'>
+        <div className='max-w-screen-xl mx-auto min-h-screen mt-20'>
+            <Helmet>
+                <title>Register</title>
+            </Helmet>
+            <div className='flex flex-col-reverse lg:flex-row items-center justify-between gap-10 mx-0 md:mx-10 2xl:mx-0'>
                 <div className="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
                     <div className="mb-8 text-center">
                         <h1 className="text-2xl font-bold text-gray-800">Register User</h1>
@@ -204,7 +212,7 @@ const Register = () => {
                 </div>
 
                 <div className='text-center'>
-                    <h1 className='text-4xl leading-loose'>Join BooksLeaf and start building your own  <br /><span className='cormorant text-5xl font-bold text-primary'>"digital library"</span></h1>
+                    <h1 className='text-xl md:text-4xl leading-loose'>Join BooksLeaf and build your own <br /><span className='cormorant text-3xl md:text-5xl font-bold text-primary'>"digital library"</span></h1>
                 </div>
             </div>
         </div>

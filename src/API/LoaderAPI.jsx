@@ -1,11 +1,25 @@
-import { auth } from '../firebase/firebase.init';
-export const LoaderAPI = (url) => {
+import { getAuth } from "firebase/auth";
+import { app } from "../firebase/firebase.init";
 
-  const token = auth.currentUser?.accessToken;
+// src/Hooks/useAuthFetch.js
+export const authFetch = async (url) => {
+  const auth = getAuth(app)
+  const user = auth.currentUser;
+  if (!user) {
+    throw new Error("User not authenticated");
+  }
+  const token = await user?.accessToken
 
-  return fetch(url, {
+  const response = await fetch(url, {
     headers: {
-      Authorization: `Bearer ${token}`,
-    },
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${token}`
+    }
   });
+
+  if (!response.ok) {
+    throw new Response("Failed to fetch", { status: response.status });
+  }
+
+  return response.json();
 };

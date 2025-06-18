@@ -11,13 +11,11 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
 
     const userRegister = (email, password) => {
-        setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
     const userSignIn = (email, password) => {
-        setLoading(true);
-        return signInWithEmailAndPassword(auth, email, password);
+        return signInWithEmailAndPassword(auth, email, password)
     }
 
     const googleSignIn = () => {

@@ -1,54 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import MyBooksList from './MyBooksList';
 import { MdOutlineLibraryAdd } from "react-icons/md";
 import Loading from '../Loading/Loading';
-import axios from 'axios';
 import Swal from 'sweetalert2';
 
-const MyBooksContainer = ({ booksData }) => {
-    const [myBooks, setMyBooks] = useState([]);
-
-    useEffect(() => {
-        setMyBooks(booksData)
-    }, [booksData])
-
-
-    const handleDeleteBook = id => {
-        // delete book from database
-
-        Swal.fire({
-            title: "Are you sure?",
-            text: "You won't be able to revert this!",
-            icon: "warning",
-            showCancelButton: true,
-            confirmButtonColor: "#3085d6",
-            cancelButtonColor: "#d33",
-            confirmButtonText: "Yes, delete it!"
-        }).then((result) => {
-            if (result.isConfirmed) {
-                axios.delete(`https://books-leaf-server.vercel.app/books/${id}`)
-                    .then(res => {
-                        if (res.data.deletedCount) {
-                            Swal.fire({
-                                position: "center",
-                                icon: "success",
-                                title: "Book Successfully Deleted",
-                                showConfirmButton: false,
-                                timer: 1500
-                            });
-                            const filteredBooks = myBooks?.filter(book => book._id !== id);
-                            setMyBooks(filteredBooks);
-                        }
-                    })
-                    .catch(err => {
-                        console.log(err);
-                    })
-            }
-        });
-
-
-    }
-
+const MyBooksContainer = ({ booksData, handleDeleteBook }) => {
+    
     return (
         <div className="container mx-auto px-4 sm:px-8">
             <div className="py-8">
@@ -77,7 +34,7 @@ const MyBooksContainer = ({ booksData }) => {
                             </thead>
                             <tbody>
                                 {
-                                    myBooks?.map(book => <MyBooksList key={book._id} book={book} handleDeleteBook={handleDeleteBook} />)
+                                    booksData?.map(book => <MyBooksList key={book._id} book={book} handleDeleteBook={handleDeleteBook} />)
                                 }
                             </tbody>
                         </table>

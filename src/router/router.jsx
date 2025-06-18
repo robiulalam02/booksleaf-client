@@ -10,7 +10,9 @@ import MyBooks from "../components/MyBooks/MyBooks";
 import UpdateBook from "../components/UpdateBook/UpdateBook";
 import Profile from "../components/Profile/Profile";
 import Private_Route from "./Private_Route";
-import { LoaderAPI } from "../API/LoaderAPI";
+import Loading from "../components/Loading/Loading";
+import ErrorPage from "../Error/ErrorPage";
+import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
 
 export const router = createBrowserRouter([
   {
@@ -23,7 +25,9 @@ export const router = createBrowserRouter([
       },
       {
         path: '/bookshelf',
-        Component: Bookshelf
+        Component: Bookshelf,
+        loader: () => fetch('https://books-leaf-server.vercel.app/books'),
+        hydrateFallbackElement: <Loading />
       },
       {
         path: '/addbook',
@@ -56,12 +60,12 @@ export const router = createBrowserRouter([
         path: '/bookDetails/:id',
         element: <Private_Route>
           <BookDetails />
-        </Private_Route>,
-        loader: async ({ params }) => {
-          return await LoaderAPI(`https://books-leaf-server.vercel.app/books/${params.id}`);
-        }
-
+        </Private_Route>
       }
     ]
   },
+  {
+    path: '*',
+    Component: ErrorPage
+  }
 ]);

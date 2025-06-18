@@ -10,7 +10,7 @@ const BooksGrid = ({ booksAPI }) => {
     }, [booksAPI]);
 
     return (
-        <div className='grid grid-cols-4 gap-5 mt-20'>
+        <div className='grid grid-cols-1 px-4 sm:px-10 md:px-4 lg:px-0 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-20'>
             {
                 books?.map(book=> <BooksCard key={book._id} book={book}/>)
             }

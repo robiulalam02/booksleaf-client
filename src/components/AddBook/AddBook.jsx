@@ -2,6 +2,7 @@ import React, { use } from 'react';
 import { AuthContext } from '../../provider/AuthContext';
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import { Helmet } from 'react-helmet-async';
 
 const AddBook = () => {
     const { user } = use(AuthContext);
@@ -40,11 +41,14 @@ const AddBook = () => {
 
     return (
         <div className='max-w-screen-xl mx-auto mb-40 mt-10'>
+            <Helmet>
+                <title>Add Book</title>
+            </Helmet>
             <div className='mb-20 text-center'>
                 <h1 className='cormorant text-3xl font-medium'>Add Book To Your Shelve</h1>
             </div>
 
-            <div className='max-w-3xl mx-auto mt-20 shadow-2xl rounded-xl overflow-hidden'>
+            <div className='max-w-3xl mx-auto mt-20 shadow-none md:shadow-2xl md:rounded-xl overflow-hidden'>
                 <div className='px-10 py-5 bg-primary text-white'>
                     <h3 className='text-xl text-secondary font-semibold'>Book Details</h3>
                     <p className='text-gray-50'>plese give your books details</p>
@@ -109,7 +113,7 @@ const AddBook = () => {
                         </div>
                     </div>
 
-                    <div className='bg-primary px-10 py-5'>
+                    <div className='bg-primary px-10 py-5 text-center md:text-start'>
                         <button type='submit' className='bg-secondary px-8 font-semibold py-3'>Add Book</button>
                     </div>
                 </form>

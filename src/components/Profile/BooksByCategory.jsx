@@ -2,6 +2,7 @@ import React from 'react';
 
 const BooksByCategory = ({ book, byCategory }) => {
     const { category } = book;
+    console.log(byCategory);
 
     return (
             <div className='shadow h-32 border-2 border-primary text-primary flex flex-col justify-center'>

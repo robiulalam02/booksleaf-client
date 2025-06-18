@@ -3,12 +3,15 @@ import { FaEye, FaEyeSlash } from 'react-icons/fa';
 import { useLocation, useNavigate } from 'react-router';
 import { AuthContext } from '../../provider/AuthContext';
 import Swal from 'sweetalert2';
+import { toast } from 'react-toastify';
+import { Helmet } from 'react-helmet-async';
 
 const Login = () => {
     const { userSignIn, googleSignIn } = use(AuthContext)
     const navigate = useNavigate();
     const location = useLocation();
     const [showPass, setShowPass] = useState(false);
+    const [showError, setShowError] = useState('');
 
 
     const handleSignIn = e => {
@@ -35,8 +38,8 @@ const Login = () => {
                     navigate(`${location.state ? location.state : '/'}`)
                 }
             })
-            .catch(err => {
-                console.log(err);
+            .catch(() => {
+                toast.error('invalid email or password')
             })
     }
 
@@ -52,12 +55,18 @@ const Login = () => {
                 });
                 navigate(`${location.state ? location.state : '/'}`)
             })
+            .catch(() => {
+                toast.error('google login unsuccessful, please try again later...')
+            })
 
     }
 
     return (
-        <div className='max-w-screen-xl mx-auto h-screen mt-20'>
-            <div className='flex items-center justify-between gap-10'>
+        <div className='max-w-screen-xl mx-auto min-h-screen mt-20'>
+            <Helmet>
+                <title>Login</title>
+            </Helmet>
+            <div className='flex flex-col-reverse lg:flex-row items-center justify-between gap-10 mx-0 md:mx-10 2xl:mx-0'>
                 <div className="bg-white rounded-lg shadow-xl p-6 w-full max-w-md">
                     <div className="mb-8 text-center">
                         <h1 className="text-2xl font-bold text-gray-800">Welcome Back</h1>
@@ -75,7 +84,9 @@ const Login = () => {
                                             <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
                                         </svg>
                                     </div>
-                                    <input name="email" type="email" required
+                                    <input
+                                        onChange={() => setShowError('')}
+                                        name="email" type="email" required
                                         className="block w-full pl-10 pr-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
                                         placeholder="your@email.com" />
                                 </div>
@@ -96,6 +107,7 @@ const Login = () => {
                                         <input
                                             name="password"
                                             type={showPass ? 'text' : 'password'}
+                                            onChange={() => setShowError('')}
                                             required
                                             pattern="^(?=.*[a-z])(?=.*[A-Z]).{6,}$"
                                             title="Password must contain at least one uppercase letter, one lowercase letter, and be at least 6 characters long."
@@ -112,6 +124,13 @@ const Login = () => {
                                     </div>
                                 </div>
                             </div>
+
+                            {
+                                showError &&
+                                <div>
+                                    <p className='text-sm text-error'>{showError}</p>
+                                </div>
+                            }
 
                             <div className="flex items-center">
                                 <input type="checkbox"
@@ -168,7 +187,7 @@ const Login = () => {
                 </div>
 
                 <div className='text-center'>
-                    <h1 className='text-4xl leading-loose'>Log in and let your reading journey grow — <span className='cormorant text-5xl font-bold text-primary'>"one leaf at a time."</span></h1>
+                    <h1 className='text-xl md:text-4xl leading-loose'>Log in and let your reading journey grow — <span className='cormorant text-3xl md:text-5xl font-bold text-primary'>"one leaf at a time."</span></h1>
                 </div>
             </div>
         </div>
