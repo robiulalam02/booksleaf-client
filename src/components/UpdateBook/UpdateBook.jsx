@@ -1,14 +1,33 @@
-import React, { use } from 'react';
+import React, { use, useEffect, useState } from 'react';
 import { AuthContext } from '../../provider/AuthContext';
-import { useLoaderData, useNavigate } from 'react-router';
+import { useNavigate, useParams } from 'react-router';
 import { FaRegEdit } from "react-icons/fa";
 import axios from 'axios';
 import Swal from 'sweetalert2';
+import Loading from '../Loading/Loading';
 
 const UpdateBook = () => {
     const { user } = use(AuthContext);
-    const book = useLoaderData();
+    const { id } = useParams();
+    const [book, setBook] = useState([]);
     const navigate = useNavigate();
+    const token = user?.accessToken;
+    const [loading, setLoading] = useState(true);
+
+    useEffect(() => {
+        if (token) {
+            axios.get(`https://books-leaf-server.vercel.app/books/${id}`, {
+                headers: {
+                    Authorization: `Bearer ${token}`
+                }
+            })
+                .then(res => {
+                    setBook(res.data);
+                    setLoading(false);
+                })
+
+        }
+    }, [id, token])
 
     const handleUpdateBook = e => {
         e.preventDefault();
@@ -35,6 +54,10 @@ const UpdateBook = () => {
                 console.log(err);
             })
 
+    }
+
+    if (loading) {
+        return <Loading />
     }
 
     return (

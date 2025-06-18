@@ -41,9 +41,6 @@ const MyBooksContainer = ({ booksData, handleDeleteBook }) => {
                     </div>
                 </div>
             </div>
-            {/* {
-                myBooks?.map(book => <MyBooksCard key={book._id} book={book} />)
-            } */}
         </div>
     )
 };

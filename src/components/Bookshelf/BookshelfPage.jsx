@@ -7,7 +7,6 @@ import { Helmet } from 'react-helmet-async';
 const BookshelfPage = ({ books, setSearchTerm, selectedCategory, setSelectedCategory, allCategoriesPromise }) => {
 
     const allCategories = use(allCategoriesPromise);
-    console.log(allCategories);
 
     const handleSearch = e => {
         e.preventDefault();

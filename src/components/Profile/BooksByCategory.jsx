@@ -2,12 +2,11 @@ import React from 'react';
 
 const BooksByCategory = ({ book, byCategory }) => {
     const { category } = book;
-    console.log(byCategory);
 
     return (
             <div className='shadow h-32 border-2 border-primary text-primary flex flex-col justify-center'>
                 {
-                    byCategory?.map(cat => <div>
+                    byCategory?.map((cat, index) => <div key={index}>
                         <span className='text-4xl'>{cat[category] < 10 ? `0${cat[category]}` : cat[category]}</span>
                     </div>)
                 }

@@ -123,7 +123,7 @@ const Profile = () => {
 
                         <div className='grid grid-cols-1 px-4 md:px-0 gap-4 mt-10 max-w-2xl mx-auto'>
                             {
-                                chartData?.map(book => <BooksByCategory key={book._id} book={book} byCategory={byCategory} />)
+                                chartData?.map((book, index) => <BooksByCategory key={index} book={book} byCategory={byCategory} />)
                             }
                         </div>
                     </div>

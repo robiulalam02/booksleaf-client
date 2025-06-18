@@ -61,6 +61,11 @@ export const router = createBrowserRouter([
         element: <Private_Route>
           <BookDetails />
         </Private_Route>
+      },
+      {
+        path: '/updatebook/:id',
+        Component: UpdateBook,
+        loader: ({params})=> fetch(`https://books-leaf-server.vercel.app/books/${params.id}`)
       }
     ]
   },
