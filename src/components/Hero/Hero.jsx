@@ -11,8 +11,8 @@ const Hero = () => {
     const [next, setNext] = useState(null);
     const [activeIndex, setActiveIndex] = useState(0);
     return (
-        <div className='text-white h-[680px] relative max-w-screen-2xl mx-auto'>
-            <div className='px-20'>
+        <div className='text-white h-[640px] relative max-w-screen-2xl mx-auto mt-20'>
+            <div className='md:max-w-5xl mx-auto lg:max-w-6xl xl:max-w-screen-2xl lg:px-20'>
                 <Swiper
                     modules={[Autoplay]}
                     style={{ height: '640px' }}
@@ -20,6 +20,10 @@ const Hero = () => {
                     slidesPerView={1}
                     spaceBetween={50}
                     onSwiper={setNext}
+                    autoplay={{
+                        delay: 5000,
+                        disableOnInteraction: false,
+                    }}
                     onSlideChange={(swiper) => setActiveIndex(swiper.activeIndex)}
                 >
                     <SwiperSlide>

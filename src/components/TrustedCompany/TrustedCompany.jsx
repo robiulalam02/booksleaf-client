@@ -27,7 +27,7 @@ const TrustedCompany = () => {
                             slidesPerView: 2,
                         },
                         768: {
-                            slidesPerView: 3,
+                            slidesPerView: 2,
                         },
                         1024: {
                             slidesPerView: 4,

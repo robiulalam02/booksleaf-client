@@ -1,0 +1,138 @@
+[33mcommit 7b7994bb65fe79106f411401d10fa5d54a05bada[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: e658f37 ac2961b
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Sat Aug 9 21:25:54 2025 +0600
+
+    feat(style): add horizontal padding to navbar for consistent page alignment
+
+[33mcommit e658f37091eeec4c653d67bac2485fc7f446af0b[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Sat Aug 9 21:14:42 2025 +0600
+
+    feat(style):add horizontal padding to navbar for consistent page alignment
+
+[33mcommit ac2961bade9b3ca8363bb90170fc08038fd72d26[m
+Author: Robiul Alam <robiulbusiness02@gmail.com>
+Date:   Fri Aug 8 19:38:04 2025 +0600
+
+    Update README.md
+
+[33mcommit c24a0d4e1ba2290ad4faa62b6a069ef7ecae4ba8[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Wed Jun 18 23:47:34 2025 +0600
+
+    feat: add loading dots animation using framer motion
+
+[33mcommit 098b6ed4fe45ad5d6bad6b223266112f4660160f[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Wed Jun 18 22:29:16 2025 +0600
+
+    feat: make website fully responsive for all device sizes and implement react-awesome-reveal,react-simple-typewriter,react-helmet-async
+
+[33mcommit 7f238846b4f3844031ef4fa1c44b79a1eb348279[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Tue Jun 17 23:55:49 2025 +0600
+
+    feat: replace server side link and deploy client side in firebase
+
+[33mcommit 833bf717804f1edb5755da7f2efe9e2be61fe5b1[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Tue Jun 17 21:05:55 2025 +0600
+
+    feat: implement framer motion animation and in book details add  book reading status tracker
+
+[33mcommit 4b6f9d88fc940f496412972c358ee82a56f271aa[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Tue Jun 17 11:38:24 2025 +0600
+
+    feat: add reviews card in book details page and review form to give review to books
+
+[33mcommit bc3b79858d293ecebe339c26b3fb26028e209ab5[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Mon Jun 16 18:35:38 2025 +0600
+
+    feat: add profile page with user information and books by categories PieChart
+
+[33mcommit dfa299303e8c58b3d927ac973fede662b8fde478[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Sun Jun 15 01:11:06 2025 +0600
+
+    feat: implement edit and delete book from my books using PUT and DELETE method
+
+[33mcommit 3e6a993b6b00aa1a801902553a4056c78d69bda1[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Sat Jun 14 11:26:52 2025 +0600
+
+    feat: add My Books route and display added books by user in table
+
+[33mcommit 77025c5866848a896f38e28d305e7b99bfaf24c2[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Fri Jun 13 20:37:49 2025 +0600
+
+    feat: implement Add Book route to store new book data to MongoDB
+
+[33mcommit 4de054f1fff4b723a0f403369f18caa06ebade02[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Fri Jun 13 10:45:53 2025 +0600
+
+    feat: add bookshelf route and implement search feature by name & category
+
+[33mcommit 2f167f59da9f62cfec8c0e0cf2fd73c2ece85175[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Thu Jun 12 20:49:08 2025 +0600
+
+    feat: add book details route and display book details dynamically by params
+
+[33mcommit b03bf0f9d415cbd38d849fb0d63303f92bd47062[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Thu Jun 12 18:08:40 2025 +0600
+
+    feat(auth): implement user sign-out and route protection on auth state
+
+[33mcommit b96ba1cf74a512ca582b4d041d3941f9c3b7fb63[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Thu Jun 12 12:04:16 2025 +0600
+
+    feat(auth): store user data to mongoDB after user registration
+
+[33mcommit c9ab3ca2e1a028223ecdf567d327568026af0610[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Wed Jun 11 22:40:04 2025 +0600
+
+    feat: add register page and implement auth provider for user authentication functionality
+
+[33mcommit f2380cc95b0e6b4f85babd1f723c347818d43c42[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Wed Jun 11 22:05:57 2025 +0600
+
+    feat: add login route with login form and social logins
+
+[33mcommit 5559be004470750744fd7e74c39bb2cb99961fce[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Wed Jun 11 16:02:46 2025 +0600
+
+    feat: added featured categories, two static sections and footer
+
+[33mcommit e25b2cf61703fdd1da7373eabbb5e395147b72ad[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Tue Jun 10 13:11:07 2025 +0600
+
+    feat: add popular books section and shows books in grid layout
+
+[33mcommit 8ccfea4024723701fae6d8d2ca3a2c98e38320d1[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Mon Jun 9 22:33:34 2025 +0600
+
+    feat: update and add new content to hero section slides
+
+[33mcommit 84746a8ac9ca28dc770687b0b37c3a6a72885c28[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Mon Jun 9 21:20:18 2025 +0600
+
+    feat: add hero with three slides
+
+[33mcommit 2e16ad26cc120a62235840d7aae8f5ef1f9ebff1[m
+Author: robiulalam02 <robiulbusiness02@gmail.com>
+Date:   Mon Jun 9 20:48:38 2025 +0600
+
+    initial setup and add navbar with dynamic routing links

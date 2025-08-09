@@ -1,18 +1,10 @@
 import React from 'react';
-import { Slide } from 'react-awesome-reveal';
-import { BiUpvote } from 'react-icons/bi';
 import { TbMilitaryRank } from 'react-icons/tb';
 import { useNavigate } from 'react-router';
 
 const BooksCard = ({ book }) => {
     const navigate = useNavigate();
     return (
-        <Slide
-            direction='up'
-            cascade={true}
-            delay={300}
-            triggerOnce={true}
-        >
             <div
             className='flex flex-col items-center gap-4 text-center shadow p-4'>
                 <div className='bg-gray-300 flex justify-center p-5 w-full h-[300px] overflow-hidden'>
@@ -36,7 +28,6 @@ const BooksCard = ({ book }) => {
                     <span className="relative">Books Detail</span>
                 </button>
             </div>
-        </Slide>
     );
 };
 

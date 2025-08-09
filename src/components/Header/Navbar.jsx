@@ -36,8 +36,8 @@ const Navbar = () => {
     </>
 
     return (
-        <div className='bg-primary'>
-            <div className="navbar text-white py-6 px-4 max-w-screen-2xl mx-auto">
+        <div className='fixed top-0 z-50 w-full backdrop-blur-md bg-primary h-20 place-content-center'>
+            <div className="navbar text-white px-4 max-w-screen-2xl mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown ">
                         <div tabIndex={0} role="button" className="btn bg-transparent lg:hidden border border-secondary">
@@ -70,7 +70,7 @@ const Navbar = () => {
                                 <button onClick={handleUserSignOut} className='px-6 py-2 font-medium text-xl hover:bg-secondary hover:rounded-lg transition-all duration-300 border-2 border-secondary hidden md:block'>Logout</button>
                             </div>
                             :
-                            <button onClick={() => navigate('/auth/login')} className='bg-secondary px-12 py-4 font-medium text-xl hover:bg-transparent hover:rounded-2xl transition-all duration-300 border-2 border-secondary'>Login</button>
+                            <button onClick={() => navigate('/auth/login')} className='bg-secondary px-8 py-3 font-medium text-xl hover:bg-transparent hover:rounded-2xl transition-all duration-300 border-2 border-secondary'>Login</button>
                     }
                 </div>
                 <div className='navbar-end md:hidden'>
