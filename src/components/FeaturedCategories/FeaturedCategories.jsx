@@ -20,7 +20,7 @@ const FeaturedCategories = ({categoriesPromise}) => {
             <div className='text-center'>
                 <h2 className='cormorant text-4xl font-semibold'>Featured Categories</h2>
             </div>
-            <div className='grid grid-cols-2 px-4 lg:px-0 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-10 max-w-screen-xl mx-auto'>
+            <div className='grid grid-cols-2 px-4 lg:px-0 md:grid-cols-2 lg:grid-cols-4 gap-5 mt-10 max-w-screen-2xl mx-auto'>
                 {
                     categories?.map(category=> <CategoryCard key={category.id} category={category} categoryCount={categoryCount} />)
                 }

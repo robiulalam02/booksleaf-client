@@ -37,7 +37,7 @@ const Navbar = () => {
 
     return (
         <div className='bg-primary'>
-            <div className="navbar text-white py-6 px-4 md:px-10">
+            <div className="navbar text-white py-6 px-4 max-w-screen-2xl mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown ">
                         <div tabIndex={0} role="button" className="btn bg-transparent lg:hidden border border-secondary">

@@ -6,7 +6,7 @@ import 'swiper/css';
 
 const TrustedCompany = () => {
     return (
-        <div className='max-w-screen-xl mx-auto my-20'>
+        <div className='max-w-screen-2xl mx-auto my-20'>
 
 
             <div className='text-center'>

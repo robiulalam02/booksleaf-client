@@ -1,9 +1,10 @@
 import React from 'react';
+import Container from '../Container/Container';
 
 const Footer = () => {
     return (
-        <div>
-            <div className="px-4 pt-16 lg:px-8">
+        <Container>
+            <div className="pt-16 max-w-screen-2xl mx-auto">
                 <div className="grid gap-10 row-gap-6 mb-8 sm:grid-cols-2 lg:grid-cols-4">
                     <div className="sm:col-span-2">
                         <button className='flex items-center gap-2'>
@@ -84,7 +85,7 @@ const Footer = () => {
                     </ul>
                 </div>
             </div>
-        </div>
+        </Container>
     );
 };
 

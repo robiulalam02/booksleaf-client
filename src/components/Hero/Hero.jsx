@@ -11,8 +11,8 @@ const Hero = () => {
     const [next, setNext] = useState(null);
     const [activeIndex, setActiveIndex] = useState(0);
     return (
-        <div className='text-white h-[680px] relative'>
-            <div className='max-w-screen-xl mx-auto'>
+        <div className='text-white h-[680px] relative max-w-screen-2xl mx-auto'>
+            <div className='px-20'>
                 <Swiper
                     modules={[Autoplay]}
                     style={{ height: '640px' }}
@@ -35,7 +35,7 @@ const Hero = () => {
                     </SwiperSlide>
                 </Swiper>
             </div>
-            <div className='w-full h-full z-50 absolute top-0 flex justify-between items-center px-4 lg:px-12'>
+            <div className='w-full h-full z-50 absolute top-0 flex justify-between items-center px-6'>
                 <button onClick={() => next && next.slidePrev()}>
                     <span className='hover:text-secondary'>
                         <MdArrowBackIosNew size={24} />
