@@ -57,10 +57,8 @@ const BookDetails = () => {
         if (book.user_email === user?.email) {
             return toast.error('Oops! You can’t upvote your own added book!')
         }
-        const update = {
-            upvote: true
-        }
-        axios.patch(`https://books-leaf-server.vercel.app/upvote/${book._id}`, update)
+
+        axios.patch(`https://books-leaf-server.vercel.app/upvote/${book._id}`)
             .then(res => {
                 if (res.data.modifiedCount) {
                     setUpvoteCount(upvoteCount + 1)
@@ -95,10 +93,10 @@ const BookDetails = () => {
             <Helmet>
                 <title>Book Details</title>
             </Helmet>
-            <div className='flex flex-col lg:flex-row items-center gap-20 py-10 max-w-screen-xl mx-auto px-4 lg:px-0'>
+            <div className='flex flex-col lg:flex-row gap-20 py-10 max-w-screen-xl mx-auto px-4 lg:px-0'>
                 <div>
                     <div className='relative border-10 h-[300px] w-[200px] md:h-[600px] md:w-[450px] border-secondary p-6'>
-                        <img style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px' }} className='h-full w-full absolute z-50 -top-10 right-12' src={book.cover_photo} alt="" />
+                        <img style={{ boxShadow: 'rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px' }} className='h-full w-full absolute z-40 -top-10 right-12' src={book.cover_photo} alt="" />
                     </div>
                 </div>
                 <div className='flex flex-col gap-10 px-4 md:px-0'>

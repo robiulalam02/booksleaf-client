@@ -127,7 +127,7 @@ const UpdateBook = () => {
                         </div>
                         <div className='flex flex-col gap-2'>
                             <label>Upvotes<span className='text-error'>*</span></label>
-                            <input required readOnly value="0" className='w-full bg-slate-50 shadow h-10 px-5' type="number" name="upvotes" placeholder='0 upvotes' />
+                            <input required readOnly value={book.upvotes} className='w-full bg-slate-50 shadow h-10 px-5' type="number" name="upvotes" />
                         </div>
                         <div className='flex flex-col gap-2'>
                             <label>Book Overview<span className='text-error'>*</span></label>

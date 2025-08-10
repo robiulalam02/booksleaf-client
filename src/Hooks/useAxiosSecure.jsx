@@ -3,7 +3,7 @@ import { AuthContext } from '../provider/AuthContext';
 import axios from 'axios';
 
 const axiosInstance = axios.create({
-    baseURL: 'https://books-leaf-server.vercel.app'
+    baseURL: 'http://localhost:3000'
 });
 
 const useAxiosSecure = () => {

@@ -26,7 +26,6 @@ export const router = createBrowserRouter([
       {
         path: '/bookshelf',
         Component: Bookshelf,
-        loader: () => fetch('https://books-leaf-server.vercel.app/books'),
         hydrateFallbackElement: <Loading />
       },
       {

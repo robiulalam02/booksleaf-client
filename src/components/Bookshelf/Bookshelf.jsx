@@ -1,33 +1,44 @@
 import React, { Suspense, useState } from 'react';
 import BookshelfPage from './BookshelfPage';
 import Loading from '../Loading/Loading';
-import { AuthContext } from '../../provider/AuthContext';
-import { useLoaderData } from 'react-router';
+import { useQuery } from "@tanstack/react-query";
+import useAxiosSecure from '../../Hooks/useAxiosSecure'
+import axios from 'axios';
+import ErrorPage from '../../Error/ErrorPage';
 
-const allCategoriesPromise = fetch('/category.json').then(res=>res.json());
+const allCategoriesPromise = fetch('/category.json').then(res => res.json());
 
 const Bookshelf = () => {
-    const booksData = useLoaderData();
+    const axiosSecure = useAxiosSecure()
     const [searchTerm, setSearchTerm] = useState('');
     const [selectedCategory, setSelectedCategory] = useState('All');
+    const [sortOption, setSortOption] = useState('');
+    console.log(sortOption)
 
+    const { data: books = [], isLoading, isError } = useQuery({
+        queryKey: ["books", searchTerm, selectedCategory, sortOption],
+        queryFn: async () => {
+            const res = await axios.get("http://localhost:3000/books", {
+                params: {
+                    search: searchTerm,
+                    category: selectedCategory,
+                    sort: sortOption
+                }
+            });
+            return res.data;
+        },
+        keepPreviousData: true
+    });
 
-    
-
-    const books = booksData.filter(book => {
-        const searchResult = book.book_title.toLowerCase().includes(searchTerm.toLowerCase()) || book.book_author.toLowerCase().includes(searchTerm.toLowerCase());
-        const categoryResult = book.book_category.toLowerCase() === selectedCategory.toLowerCase();
-
-        if (selectedCategory==="All") {
-            return searchResult;
-        }
-        return searchResult && categoryResult;
+    if (isError) {
+        return <ErrorPage />
     }
-    )
 
     return (
         <Suspense fallback={<Loading />}>
-            <BookshelfPage books={books} setSearchTerm={setSearchTerm} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} allCategoriesPromise={allCategoriesPromise} />
+            <div className='min-h-dvh'>
+                <BookshelfPage books={books} setSearchTerm={setSearchTerm} selectedCategory={selectedCategory} setSelectedCategory={setSelectedCategory} allCategoriesPromise={allCategoriesPromise} isLoading={isLoading} setSortOption={setSortOption} sortOption={sortOption} />
+            </div>
         </Suspense>
     );
 };

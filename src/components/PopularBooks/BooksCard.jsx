@@ -6,7 +6,7 @@ const BooksCard = ({ book }) => {
     const navigate = useNavigate();
     return (
             <div
-            className='flex flex-col items-center gap-4 text-center shadow p-4'>
+            className='flex flex-col items-center gap-4 text-center shadow p-4 rounded'>
                 <div className='bg-gray-300 flex justify-center p-5 w-full h-[300px] overflow-hidden'>
                     <img className='object-cover h-full' src={book.cover_photo} alt="" />
                 </div>

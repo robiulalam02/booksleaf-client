@@ -35,7 +35,7 @@ const MainLayout = () => {
             <header>
                 <Navbar />
             </header>
-            <main>
+            <main className='pt-20'>
                 <Outlet />
             </main>
             <footer>
