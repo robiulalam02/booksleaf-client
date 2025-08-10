@@ -10,7 +10,7 @@ const CategoryCard = ({ category, categoryCount }) => {
                 fraction={0.5}
                 triggerOnce
             >
-                <div className='border-2 border-secondary rounded-xl flex flex-col items-center p-5 gap-2 '>
+                <div className='border-2 border-secondary/80 rounded-xl flex flex-col items-center p-5 gap-2 hover:-translate-y-1 cursor-pointer transition ease-in-out duration-300 hover:border-secondary'>
                     <img className='w-14 ' src={category.image} alt="" />
                     <h3>{category.name}</h3>
                     <p>

@@ -30,13 +30,12 @@ const Navbar = () => {
         <NavLink to="/bookshelf">Bookshelf</NavLink>
         {user && <NavLink to="/addbook">Add Book</NavLink>}
         {user && <NavLink to="/mybooks">My Books</NavLink>}
-        {user && <NavLink to="/profile">Profile</NavLink>}
-        <NavLink to="/contact">Contact</NavLink>
+        <NavLink to="/contact-us">Contact</NavLink>
         <button onClick={handleUserSignOut} className='px-3 py-2 font-medium text-primary hover:bg-secondary rounded-lg transition-all duration-300 border-2 border-secondary block md:hidden mt-2 w-6/12'>Logout</button>
     </>
 
     return (
-        <div className='fixed top-0 z-50 w-full backdrop-blur-md bg-primary h-20 place-content-center'>
+        <div className='fixed top-0 z-50 w-full backdrop-blur-md bg-primary place-content-center'>
             <div className="navbar text-white px-4 max-w-screen-2xl mx-auto">
                 <div className="navbar-start">
                     <div className="dropdown ">
@@ -64,9 +63,9 @@ const Navbar = () => {
                     {
                         user ?
                             <div className='flex items-center gap-6 cursor-pointer'>
-                                <div className='w-12 h-12 rounded-full overflow-hidden hidden md:block'>
+                                <button onClick={()=>navigate('/profile')} className='w-12 h-12 rounded-full overflow-hidden hidden md:block'>
                                     <img className='w-full h-full object-cover' src={user.photoURL} alt="" />
-                                </div>
+                                </button>
                                 <button onClick={handleUserSignOut} className='px-6 py-2 font-medium text-xl hover:bg-secondary hover:rounded-lg transition-all duration-300 border-2 border-secondary hidden md:block'>Logout</button>
                             </div>
                             :

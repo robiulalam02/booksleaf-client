@@ -13,6 +13,7 @@ import Private_Route from "./Private_Route";
 import Loading from "../components/Loading/Loading";
 import ErrorPage from "../Error/ErrorPage";
 import ScrollToTop from "../components/ScrollToTop/ScrollToTop";
+import Contact from "../components/Contact/Contact";
 
 export const router = createBrowserRouter([
   {
@@ -65,6 +66,10 @@ export const router = createBrowserRouter([
         path: '/updatebook/:id',
         Component: UpdateBook,
         loader: ({params})=> fetch(`https://books-leaf-server.vercel.app/books/${params.id}`)
+      },
+      {
+        path: '/contact-us',
+        Component: Contact
       }
     ]
   },

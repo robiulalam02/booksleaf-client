@@ -19,7 +19,7 @@ const BookshelfPage = ({ books, setSearchTerm, selectedCategory, setSelectedCate
     }
 
     return (
-        <div className='max-w-screen-xl mx-auto mt-10 mb-20'>
+        <div className='max-w-screen-xl mx-auto mt-10 mb-20 px-4 sm:px-6'>
             <Helmet>
                 <title>Bookshelf</title>
             </Helmet>
@@ -27,7 +27,7 @@ const BookshelfPage = ({ books, setSearchTerm, selectedCategory, setSelectedCate
                 <h1 className='cormorant text-4xl font-medium'>Your Digital BookShelf</h1>
             </div>
             <div>
-                <div className='flex flex-col-reverse md:flex-row items-start md:items-center justify-between px-4 lg:px-0'>
+                <div className='flex flex-col-reverse md:flex-row items-start md:items-center justify-between'>
                     <div className=''>
                         <h1 className='mt-5 md:mt-0'>Total Books Found: {books.length}</h1>
                         <button onClick={() => setShowFilter(!showFilter)} className='flex items-center bg-primary text-white py-1 px-2 rounded mt-5 md:hidden'>Filter <CiFilter className='text-2xl' /></button>
@@ -49,7 +49,7 @@ const BookshelfPage = ({ books, setSearchTerm, selectedCategory, setSelectedCate
 
                 </div>
 
-                <div className="container mx-auto px-4 mt-10">
+                <div className="mt-10">
                     <div className="grid grid-cols-1 md:grid-cols-12 gap-6 items-start">
 
                         {/* Sidebar */}
